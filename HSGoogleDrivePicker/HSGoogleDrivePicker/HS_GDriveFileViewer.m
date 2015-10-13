@@ -6,20 +6,20 @@
 //  Copyright © 2015 HobbyistSoftware. All rights reserved.
 //
 
-#import "GDriveFileViewer.h"
-#import "GDriveManager.h"
+#import "HS_GDriveFileViewer.h"
+#import "HS_GDriveManager.h"
 #import "AsyncImageView.h"
 
 
 
-@interface GDriveFileViewer () <UITableViewDataSource,UITableViewDelegate>
+@interface HS_GDriveFileViewer () <UITableViewDataSource,UITableViewDelegate>
 
 
 
 @property (retain) UILabel *output;
 @property (retain) UIActivityIndicatorView *activity;
 
-@property (retain) GDriveManager *manager;
+@property (retain) HS_GDriveManager *manager;
 @property (retain) UITableView *table;
 @property (retain) GTLDriveFileList *fileList;
 @property (retain) UIImage *blankImage;
@@ -32,7 +32,7 @@
 @end
 
 
-@implementation GDriveFileViewer
+@implementation HS_GDriveFileViewer
 
 
 
@@ -44,7 +44,7 @@
     {
         [self setTitle:@"Google Drive"];
         
-        self.manager=[[GDriveManager alloc] initWithId:clientId secret:secret];
+        self.manager=[[HS_GDriveManager alloc] initWithId:clientId secret:secret];
         self.modalPresentationStyle=UIModalPresentationPageSheet;
         
         UIGraphicsBeginImageContext(CGSizeMake(40, 40));
@@ -267,7 +267,7 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    NSString *identifier=@"GDriveFileViewer";
+    NSString *identifier=@"HS_GDriveFileViewer";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell)
     {

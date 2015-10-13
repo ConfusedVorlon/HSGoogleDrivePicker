@@ -6,20 +6,20 @@
 //  Copyright © 2015 HobbyistSoftware. All rights reserved.
 //
 
-#import "GDrivePicker.h"
-#import "GDriveFileViewer.h"
+#import "HS_GDrivePicker.h"
+#import "HS_GDriveFileViewer.h"
 
-@interface GDrivePicker ()
+@interface HS_GDrivePicker ()
 
-@property (retain) GDriveFileViewer *viewer;
+@property (retain) HS_GDriveFileViewer *viewer;
 
 @end
 
-@implementation GDrivePicker
+@implementation HS_GDrivePicker
 
 - (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret
 {
-    GDriveFileViewer *viewer=[[GDriveFileViewer alloc] initWithId:clientId secret:secret];
+    HS_GDriveFileViewer *viewer=[[HS_GDriveFileViewer alloc] initWithId:clientId secret:secret];
     if (!viewer)
     {
         return NULL;

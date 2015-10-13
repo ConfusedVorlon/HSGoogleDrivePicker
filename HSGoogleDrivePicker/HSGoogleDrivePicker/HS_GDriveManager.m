@@ -6,13 +6,13 @@
 //  Copyright © 2015 HobbyistSoftware. All rights reserved.
 //
 
-#import "GDriveManager.h"
+#import "HS_GDriveManager.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 
 
 static NSString *const kKeychainItemName = @"Drive API";
 
-@interface GDriveManager ()
+@interface HS_GDriveManager ()
 
 @property (retain) NSString *clientId;
 @property (retain) NSString *clientSecret;
@@ -21,7 +21,7 @@ static NSString *const kKeychainItemName = @"Drive API";
 
 @end
 
-@implementation GDriveManager
+@implementation HS_GDriveManager
 
 - (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret
 {
