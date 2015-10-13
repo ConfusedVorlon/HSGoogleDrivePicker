@@ -12,11 +12,11 @@ This is the API that Google should have written.
 
 ```objective-c
     
-HS_GDrivePicker.h *picker=[[HS_GDrivePicker.h alloc] initWithId:@"YOUR ID HERE"
+HS_GDrivePicker *picker=[[HS_GDrivePicker alloc] initWithId:@"YOUR ID HERE"
                                                    secret:@"YOUR SECRET HERE"];
     
-    [picker pickFromViewController:self
-                    withCompletion:^(GTLDriveFile *file) {
+[picker pickFromViewController:self
+                withCompletion:^(GTLDriveFile *file) {
                         NSLog(@"selected: %@",file.title);
                     }];
 ```
@@ -31,7 +31,8 @@ HS_GDrivePicker.h *picker=[[HS_GDrivePicker.h alloc] initWithId:@"YOUR ID HERE"
 ---
 ##Installing HSGoogleDrivePicker
 
-You can install HSGoogleDrivePicker in your project by using [CocoaPods](https://github.com/cocoapods/cocoapods):
+You can install HSGoogleDrivePicker in your project by using [CocoaPods](https://github.com/cocoapods/cocoapods)
+
 You also need the Google API client (or you can copy the files manually following the instructions in the next section)
 
 ```Ruby
@@ -56,11 +57,11 @@ The completion handler returns with a GTLDriveFile which has all the info you ne
 
 ```objective-c
     
-HS_GDrivePicker.h *picker=[[HS_GDrivePicker.h alloc] initWithId:@"YOUR ID HERE"
+HS_GDrivePicker *picker=[[HS_GDrivePicker alloc] initWithId:@"YOUR ID HERE"
                                                    secret:@"YOUR SECRET HERE"];
     
-    [picker pickFromViewController:self
-                    withCompletion:^(GTLDriveFile *file) {
+[picker pickFromViewController:self
+                withCompletion:^(GTLDriveFile *file) {
                         NSLog(@"selected: %@",file.title);
                     }];
 ```
@@ -68,7 +69,9 @@ HS_GDrivePicker.h *picker=[[HS_GDrivePicker.h alloc] initWithId:@"YOUR ID HERE"
 
 ## Status
 
-HSGoogleDrivePicker is simplistic and new, but I’m using it in production code. I welcome pull requests.
+HSGoogleDrivePicker is simplistic and new, but I’m using it in production code. 
+
+I welcome pull requests.
 
 ## License
 
