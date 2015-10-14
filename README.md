@@ -76,12 +76,16 @@ To download the file, use
 ```objective-c
        
 [manager downloadFile:file
-                                           toPath:fullPath
-                            withCompletionHandler:^(NSError *error) {
+               toPath:fullPath
+withCompletionHandler:^(NSError *error) {
 
 	if (error)
 	{
-		NSLog(@"Error downloading”);
+		NSLog(@"Error downloading");
+	}
+	else
+	{
+		NSLog(@"Success");
 	}
 }];
 ```
