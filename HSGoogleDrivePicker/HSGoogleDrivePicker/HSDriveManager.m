@@ -141,8 +141,6 @@ static NSString *const kKeychainItemName = @"Drive API";
     {
         return NULL;
     }
-    
-    
 }
 
 // Creates the auth controller for authorizing access to Drive API.

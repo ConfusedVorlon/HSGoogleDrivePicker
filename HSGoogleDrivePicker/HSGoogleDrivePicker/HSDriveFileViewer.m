@@ -283,16 +283,11 @@
     GTLDriveFile *file=[self fileForIndexPath:indexPath];
     [cell.textLabel setText:file.title];
     
-    NSLog(@"download URL: %@",file.downloadUrl);
+    //NSLog(@"download URL: %@",file.downloadUrl);
     
     AsyncImageView *async=(AsyncImageView *)[cell.imageView.subviews firstObject];
     
     [async setImageURL:[NSURL URLWithString:file.iconLink]];
-//    if (file.thumbnailLink)
-//    {
-//        [async setImageURL:[NSURL URLWithString:file.thumbnailLink]];
-//    }
-    
     
     return cell;
 }
