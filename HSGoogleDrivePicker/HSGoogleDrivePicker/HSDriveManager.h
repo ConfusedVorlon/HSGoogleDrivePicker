@@ -20,6 +20,8 @@
 /** runs a fetch with the current search settings. Cancels any outstanding fetch **/
 - (void)fetchFilesWithCompletionHandler:(void (^)(GTLServiceTicket *ticket, GTLDriveFileList *fileList, NSError *error))handler;
 
+-(void)downloadFile:(GTLDriveFile*)file toPath:(NSString*)path withCompletionHandler:(void (^)(NSError *error))handler;
+
 /** if No, shows 'my files'. Default is NO **/
 @property (assign) BOOL sharedWithMe;
 /** initially 'root'. Ignored if sharedWithMe is selected **/

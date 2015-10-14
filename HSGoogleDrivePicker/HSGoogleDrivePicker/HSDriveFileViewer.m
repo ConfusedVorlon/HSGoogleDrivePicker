@@ -6,7 +6,7 @@
 //  Copyright © 2015 HobbyistSoftware. All rights reserved.
 //
 
-#import "HSGDriveFileViewer.h"
+#import "HSDriveFileViewer.h"
 #import "HSDriveManager.h"
 #import "AsyncImageView.h"
 
@@ -308,7 +308,7 @@
     {
         [self dismissViewControllerAnimated:YES
                                  completion:^{
-                                     self.completion(file);
+                                     self.completion(self.manager,file);
                                  }];
     }
 }

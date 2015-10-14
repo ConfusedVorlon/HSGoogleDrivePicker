@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HSDriveManager.h"
 
 @class GTLDriveFile;
 
-typedef void (^GDriveFileViewerCompletionBlock)(GTLDriveFile *file);
+typedef void (^GDriveFileViewerCompletionBlock)(HSDriveManager *manager, GTLDriveFile *file);
 
 @interface HSDriveFileViewer : UIViewController
 

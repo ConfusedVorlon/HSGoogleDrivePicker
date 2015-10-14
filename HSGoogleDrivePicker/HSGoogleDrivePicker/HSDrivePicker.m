@@ -33,7 +33,7 @@
     return self;
 }
 
--(void)pickFromViewController:(UIViewController*)vc withCompletion:(void (^)(GTLDriveFile *file))completion;
+-(void)pickFromViewController:(UIViewController*)vc withCompletion:(void (^)(HSDriveManager *manager, GTLDriveFile *file))completion
 {
     self.viewer.completion=completion;
     

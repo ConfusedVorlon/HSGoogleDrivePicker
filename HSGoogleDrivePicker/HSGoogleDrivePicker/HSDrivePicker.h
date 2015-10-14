@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "GTLDrive.h"
-
+#import "HSDriveManager.h"
 
 @interface HSDrivePicker : UINavigationController
 
 - (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret;
 
--(void)pickFromViewController:(UIViewController*)vc withCompletion:(void (^)(GTLDriveFile *file))completion;
+-(void)pickFromViewController:(UIViewController*)vc withCompletion:(void (^)(HSDriveManager *manager, GTLDriveFile *file))completion;
 
 @end
