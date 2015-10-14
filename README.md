@@ -18,7 +18,7 @@ HS_GDrivePicker *picker=[[HS_GDrivePicker alloc] initWithId:@"YOUR ID HERE"
                                                    secret:@"YOUR SECRET HERE"];
     
 [picker pickFromViewController:self
-                withCompletion:^(GTLDriveFile *file) {
+                withCompletion:^(HSDriveManager *manager, GTLDriveFile *file) {
                         NSLog(@"selected: %@",file.title);
                     }];
 ```
@@ -46,9 +46,11 @@ pod 'Google-API-Client', '~> 1.0'
 
 ## Getting your API keys
 
-Follow [Google’s guide](https://developers.google.com/drive/ios/quickstart) (Step 1 only).
+- Follow [Google’s guide](https://developers.google.com/drive/ios/quickstart) (Step 1 only).
+- (If you prefer, you can download Google’s API code by following Step 2. This will allow you to ignore the Google-API-Client pod, which contains a lot of un-needed code.)
+- Enable the Drive API permission. (click on ‘APIs and Auth’, ‘APIs’, then search for ‘Drive’) 
 
-If you prefer, you can download Google’s API code by following Step 2. This will allow you to ignore the Google-API-Client pod, which contains a lot of un-needed code.
+
 
 ## Usage
 
@@ -64,11 +66,25 @@ HS_GDrivePicker *picker=[[HS_GDrivePicker alloc] initWithId:@"YOUR ID HERE"
                                                    secret:@"YOUR SECRET HERE"];
     
 [picker pickFromViewController:self
-                withCompletion:^(GTLDriveFile *file) {
+                withCompletion:^(HSDriveManager *manager, GTLDriveFile *file) {
                         NSLog(@"selected: %@",file.title);
                     }];
 ```
 
+To download the file, use 
+
+```objective-c
+       
+[manager downloadFile:file
+                                           toPath:fullPath
+                            withCompletionHandler:^(NSError *error) {
+
+	if (error)
+	{
+		NSLog(@"Error downloading”);
+	}
+}];
+```
 
 ## Status
 
