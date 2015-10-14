@@ -12,7 +12,7 @@
 
 typedef void (^GDriveFileViewerCompletionBlock)(GTLDriveFile *file);
 
-@interface HS_GDriveFileViewer : UIViewController
+@interface HSDriveFileViewer : UIViewController
 
 @property (copy) GDriveFileViewerCompletionBlock completion;
 

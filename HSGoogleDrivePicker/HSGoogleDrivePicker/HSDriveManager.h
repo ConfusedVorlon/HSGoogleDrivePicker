@@ -10,7 +10,7 @@
 #import "GTLDrive.h"
 #import "GTLDriveFile+HS.h"
 
-@interface HS_GDriveManager : NSObject
+@interface HSDriveManager : NSObject
 
 - (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret;
 

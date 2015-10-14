@@ -10,6 +10,8 @@ This is the API that Google should have written.
 
 ## Example
 
+`#import “HS_GDrivePicker.h"`
+
 ```objective-c
     
 HS_GDrivePicker *picker=[[HS_GDrivePicker alloc] initWithId:@"YOUR ID HERE"
@@ -54,6 +56,7 @@ Run the example code above using your keys.
 
 The completion handler returns with a GTLDriveFile which has all the info you need. 
 
+`#import "HS_GDrivePicker.h"`
 
 ```objective-c
     

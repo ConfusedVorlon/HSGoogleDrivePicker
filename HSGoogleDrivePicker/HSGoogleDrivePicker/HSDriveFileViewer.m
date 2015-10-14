@@ -6,20 +6,20 @@
 //  Copyright © 2015 HobbyistSoftware. All rights reserved.
 //
 
-#import "HS_GDriveFileViewer.h"
-#import "HS_GDriveManager.h"
+#import "HSGDriveFileViewer.h"
+#import "HSDriveManager.h"
 #import "AsyncImageView.h"
 
 
 
-@interface HS_GDriveFileViewer () <UITableViewDataSource,UITableViewDelegate>
+@interface HSDriveFileViewer () <UITableViewDataSource,UITableViewDelegate>
 
 
 
 @property (retain) UILabel *output;
 @property (retain) UIActivityIndicatorView *activity;
 
-@property (retain) HS_GDriveManager *manager;
+@property (retain) HSDriveManager *manager;
 @property (retain) UITableView *table;
 @property (retain) GTLDriveFileList *fileList;
 @property (retain) UIImage *blankImage;
@@ -32,7 +32,7 @@
 @end
 
 
-@implementation HS_GDriveFileViewer
+@implementation HSDriveFileViewer
 
 
 
@@ -44,7 +44,7 @@
     {
         [self setTitle:@"Google Drive"];
         
-        self.manager=[[HS_GDriveManager alloc] initWithId:clientId secret:secret];
+        self.manager=[[HSDriveManager alloc] initWithId:clientId secret:secret];
         self.modalPresentationStyle=UIModalPresentationPageSheet;
         
         UIGraphicsBeginImageContext(CGSizeMake(40, 40));
@@ -66,7 +66,8 @@
     
     
     // Create a UITextView to display output.
-    UILabel *output=[[UILabel alloc] initWithFrame:CGRectMake(40, 60, self.view.bounds.size.width-80, 40)];
+    UILabel *output=[[UILabel alloc] initWithFrame:CGRectMake(40, 100, self.view.bounds.size.width-80, 40)];
+    output.numberOfLines=0;
     output.textAlignment=NSTextAlignmentCenter;
     output.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:output];
@@ -199,8 +200,6 @@
 
 -(void)updateButtons
 {
-
-    
     if ([self.folderTrail count]>1 && !self.showShared)
     {
         [self.navigationItem setLeftBarButtonItems:@[self.doneItem,self.upItem]
@@ -211,7 +210,6 @@
         [self.navigationItem setLeftBarButtonItems:@[self.doneItem]
                                           animated:YES];
     }
-
 }
 
 #pragma mark searching
@@ -267,7 +265,7 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    NSString *identifier=@"HS_GDriveFileViewer";
+    NSString *identifier=@"HSDriveFileViewer";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell)
     {
@@ -285,16 +283,15 @@
     GTLDriveFile *file=[self fileForIndexPath:indexPath];
     [cell.textLabel setText:file.title];
     
-    NSLog(@"mime: %@",file.mimeType);
+    NSLog(@"download URL: %@",file.downloadUrl);
     
     AsyncImageView *async=(AsyncImageView *)[cell.imageView.subviews firstObject];
     
     [async setImageURL:[NSURL URLWithString:file.iconLink]];
-    if (file.thumbnailLink)
-    {
-        [async setImageURL:[NSURL URLWithString:file.thumbnailLink]];
-        
-    }
+//    if (file.thumbnailLink)
+//    {
+//        [async setImageURL:[NSURL URLWithString:file.thumbnailLink]];
+//    }
     
     
     return cell;

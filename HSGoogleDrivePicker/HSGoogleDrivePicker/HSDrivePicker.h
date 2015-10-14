@@ -10,7 +10,7 @@
 #import "GTLDrive.h"
 
 
-@interface HS_GDrivePicker : UINavigationController
+@interface HSDrivePicker : UINavigationController
 
 - (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret;
 

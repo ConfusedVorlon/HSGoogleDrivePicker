@@ -6,13 +6,13 @@
 //  Copyright © 2015 HobbyistSoftware. All rights reserved.
 //
 
-#import "HS_GDriveManager.h"
+#import "HSDriveManager.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 
 
 static NSString *const kKeychainItemName = @"Drive API";
 
-@interface HS_GDriveManager ()
+@interface HSDriveManager ()
 
 @property (retain) NSString *clientId;
 @property (retain) NSString *clientSecret;
@@ -21,7 +21,7 @@ static NSString *const kKeychainItemName = @"Drive API";
 
 @end
 
-@implementation HS_GDriveManager
+@implementation HSDriveManager
 
 - (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret
 {
@@ -130,7 +130,7 @@ static NSString *const kKeychainItemName = @"Drive API";
 // Creates the auth controller for authorizing access to Drive API.
 - (GTMOAuth2ViewControllerTouch *)createAuthController {
     GTMOAuth2ViewControllerTouch *authController;
-    NSArray *scopes = [NSArray arrayWithObjects:kGTLAuthScopeDriveMetadataReadonly, nil];
+    NSArray *scopes = [NSArray arrayWithObjects:kGTLAuthScopeDrive, nil];
     authController = [[GTMOAuth2ViewControllerTouch alloc]
                       initWithScope:[scopes componentsJoinedByString:@" "]
                       clientID:self.clientId
