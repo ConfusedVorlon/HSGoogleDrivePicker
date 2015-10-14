@@ -7,6 +7,8 @@ For many use-cases, all you want is to present a picker, and get a notification 
 
 This is the API that Google should have written.
 
+![Picker Screenshot](https://raw.githubusercontent.com/ConfusedVorlon/HSGoogleDrivePicker/master/images/iPadPicker.png)
+
 
 ## Example
 
