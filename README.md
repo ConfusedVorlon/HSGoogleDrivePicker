@@ -37,11 +37,9 @@ HS_GDrivePicker *picker=[[HS_GDrivePicker alloc] initWithId:@"YOUR ID HERE"
 
 You can install HSGoogleDrivePicker in your project by using [CocoaPods](https://github.com/cocoapods/cocoapods)
 
-You also need the Google API client (or you can copy the files manually following the instructions in the next section)
 
 ```Ruby
 pod 'HSGoogleDrivePicker', '~> 0.1.0’
-pod 'Google-API-Client', '~> 1.0'
 
 ```
 
@@ -49,7 +47,6 @@ pod 'Google-API-Client', '~> 1.0'
 ## Getting your API keys
 
 - Follow [Google’s guide](https://developers.google.com/drive/ios/quickstart) (Step 1 only).
-- (If you prefer, you can download Google’s API code by following Step 2. This will allow you to ignore the Google-API-Client pod, which contains a lot of un-needed code.)
 - Enable the Drive API permission. (click on ‘APIs and Auth’, ‘APIs’, then search for ‘Drive’) 
 
 
