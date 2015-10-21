@@ -12,8 +12,11 @@
 
 @interface HSDrivePicker : UINavigationController
 
+/** Provide your API id & secret **/
 - (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret;
 
+/** Present the picker from your view controller. It will present as a modal form.
+ The completion returns both the file, and the authorised manager which can be used to download the file **/
 -(void)pickFromViewController:(UIViewController*)vc withCompletion:(void (^)(HSDriveManager *manager, GTLDriveFile *file))completion;
 
 @end
