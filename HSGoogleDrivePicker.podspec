@@ -20,5 +20,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.dependency 'AsyncImageView'
   s.dependency 'Google-API-Client/Drive'
+  s.dependency 'SVPullToRefresh'
 
 end

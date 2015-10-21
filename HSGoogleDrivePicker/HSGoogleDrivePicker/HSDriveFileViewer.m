@@ -9,7 +9,7 @@
 #import "HSDriveFileViewer.h"
 #import "HSDriveManager.h"
 #import "AsyncImageView.h"
-
+#import "UIScrollView+SVPullToRefresh.h"
 
 
 @interface HSDriveFileViewer () <UITableViewDataSource,UITableViewDelegate>
@@ -17,14 +17,14 @@
 
 
 @property (retain) UILabel *output;
-@property (retain) UIActivityIndicatorView *activity;
 
 @property (retain) HSDriveManager *manager;
 @property (retain) UITableView *table;
+@property (assign) UIToolbar *toolbar;
 @property (retain) GTLDriveFileList *fileList;
 @property (retain) UIImage *blankImage;
 @property (retain) UIBarButtonItem *upItem;
-@property (retain) UIBarButtonItem *doneItem;
+@property (retain) UIBarButtonItem *segmentedControlButtonItem;
 @property (retain) NSMutableArray *folderTrail;
 @property (assign) BOOL showShared;
 
@@ -33,7 +33,6 @@
 
 
 @implementation HSDriveFileViewer
-
 
 
 
@@ -57,13 +56,14 @@
     return self;
 }
 
-// When the view loads, create necessary subviews, and initialize the Drive API service.
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
     
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     // Create a UITextView to display output.
     UILabel *output=[[UILabel alloc] initWithFrame:CGRectMake(40, 100, self.view.bounds.size.width-80, 40)];
@@ -73,30 +73,46 @@
     [self.view addSubview:output];
     self.output=output;
     
-    
-    UIActivityIndicatorView *activity=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [activity setCenter:CGPointMake(self.view.center.x, 150)];
-    [activity setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin];
-    [activity setColor:self.view.tintColor];
-    [activity setHidesWhenStopped:YES];
-    [self.view addSubview:activity];
-    
-    self.activity=activity;
+    UIToolbar *toolbar=[UIToolbar new];
+    [toolbar setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.toolbar=toolbar;
+    [self.view addSubview:toolbar];
     
     UITableView *tableView=[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    [tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    [tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
-    tableView.contentInset=UIEdgeInsetsMake(44, 0, 0, 0);
-    tableView.scrollIndicatorInsets=UIEdgeInsetsMake(44, 0, 0, 0);
+    
+    [tableView addPullToRefreshWithActionHandler:^{
+        [self getFiles];
+    }];
     
     [self.view addSubview:tableView];
     self.table=tableView;
+    
+    NSDictionary *views = NSDictionaryOfVariableBindings(toolbar,tableView);
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[toolbar]|"
+                                                                      options:NSLayoutFormatDirectionLeftToRight
+                                                                      metrics:nil
+                                                                        views:views]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[tableView]|"
+                                                                      options:NSLayoutFormatDirectionLeftToRight
+                                                                      metrics:nil
+                                                                        views:views]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[toolbar(44)][tableView]|"
+                                                                      options:NSLayoutFormatDirectionLeftToRight
+                                                                      metrics:nil
+                                                                        views:views]];
+
     
     [self setupButtons];
     [self updateButtons];
     
 }
+
 
 // When the view appears, ensure that the Drive API service is authorized, and perform API calls.
 - (void)viewDidAppear:(BOOL)animated
@@ -123,18 +139,22 @@
 
 -(void)getFiles
 {
+    if (self.table.pullToRefreshView.state==SVPullToRefreshStateStopped)
+    {
+        [self.table triggerPullToRefresh];
+    }
+    
     self.manager.sharedWithMe=self.showShared;
     self.fileList=NULL;
     
     [self updateDisplay];
-    [self.activity startAnimating];
     [self updateButtons];
-    [self.output setText:@"Loading"];
     
     [self.manager fetchFilesWithCompletionHandler:^(GTLServiceTicket *ticket, GTLDriveFileList *fileList, NSError *error)
      {
-         [self.activity stopAnimating];
+         [self.table.pullToRefreshView stopAnimating];
          
+
          if (error)
          {
              NSString *message=[NSString stringWithFormat:@"Error: %@",error.localizedDescription ];
@@ -167,10 +187,7 @@
             [self.table setHidden:YES];
         }
     }
-    else
-    {
-        [self.table setHidden:YES];
-    }
+
 }
 
 
@@ -182,8 +199,9 @@
     segmentedControl.frame = CGRectMake(0, 0, 100, 30);
     segmentedControl.selectedSegmentIndex = 0;
     UIBarButtonItem *segmentedControlButtonItem = [[UIBarButtonItem alloc] initWithCustomView:(UIView *)segmentedControl];
+    self.segmentedControlButtonItem=segmentedControlButtonItem;
     
-    self.doneItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+    UIBarButtonItem *doneItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                 target:self
                                                                 action:@selector(cancel:)];
     
@@ -194,21 +212,23 @@
     
     
     
-    [self.navigationItem setRightBarButtonItem:segmentedControlButtonItem
+    [self.navigationItem setLeftBarButtonItem:doneItem
                                       animated:YES];
 }
 
 -(void)updateButtons
 {
+    UIBarButtonItem *flex=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                        target:nil
+                                                                        action:nil];
+    
     if ([self.folderTrail count]>1 && !self.showShared)
     {
-        [self.navigationItem setLeftBarButtonItems:@[self.doneItem,self.upItem]
-                                          animated:YES];
+        [self.toolbar setItems:@[self.upItem,flex,self.segmentedControlButtonItem] animated:YES];
     }
     else
     {
-        [self.navigationItem setLeftBarButtonItems:@[self.doneItem]
-                                          animated:YES];
+        [self.toolbar setItems:@[flex,self.segmentedControlButtonItem] animated:YES];
     }
 }
 
@@ -258,6 +278,7 @@
     return [self.fileList.items objectAtIndex:[indexPath row]];
 }
 
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.fileList.items count];
@@ -280,14 +301,19 @@
         [iv addSubview:async];
     }
     
-    GTLDriveFile *file=[self fileForIndexPath:indexPath];
-    [cell.textLabel setText:file.title];
-    
-    //NSLog(@"download URL: %@",file.downloadUrl);
-    
     AsyncImageView *async=(AsyncImageView *)[cell.imageView.subviews firstObject];
+    GTLDriveFile *file=[self fileForIndexPath:indexPath];
     
-    [async setImageURL:[NSURL URLWithString:file.iconLink]];
+    if (file)
+    {
+        [cell.textLabel setText:file.title];
+        [async setImageURL:[NSURL URLWithString:file.iconLink]];
+    }
+    else
+    {
+        [cell.textLabel setText:NULL];
+        [async setImage:NULL];
+    }
     
     return cell;
 }
