@@ -39,7 +39,7 @@ You can install HSGoogleDrivePicker in your project by using [CocoaPods](https:/
 
 
 ```Ruby
-pod 'HSGoogleDrivePicker', '~> 0.1’
+pod 'HSGoogleDrivePicker', '~> 0.1'
 
 ```
 
