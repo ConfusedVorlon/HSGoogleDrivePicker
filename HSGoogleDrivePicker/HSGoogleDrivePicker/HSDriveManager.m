@@ -46,7 +46,7 @@ static NSString *const kKeychainItemName = @"Drive API";
 
 #pragma mark download
 
--(void)downloadFile:(GTLDriveFile*)file toPath:(NSString*)path withCompletionHandler:(void (^)(NSError *error))handler
+-(GTMHTTPFetcher*)downloadFile:(GTLDriveFile*)file toPath:(NSString*)path withCompletionHandler:(void (^)(NSError *error))handler
 {
     GTMHTTPFetcher *fetcher = [self.service.fetcherService fetcherWithURLString:file.downloadUrl];
     [fetcher setDownloadPath:path];
@@ -60,6 +60,8 @@ static NSString *const kKeychainItemName = @"Drive API";
             handler( error);
         }
     }];
+    
+    return fetcher;
 }
 
 #pragma mark file listing
