@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HSGoogleDrivePicker"
-  s.version      = "0.1.3"
+  s.version      = "0.1.4"
   s.summary      = "A sane and simple file picker for Google Drive."
 
   s.homepage     = "https://github.com/ConfusedVorlon/HSGoogleDrivePicker"
