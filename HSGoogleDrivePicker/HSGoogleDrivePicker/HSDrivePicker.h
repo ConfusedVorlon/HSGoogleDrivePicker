@@ -19,4 +19,16 @@
  The completion returns both the file, and the authorised manager which can be used to download the file **/
 -(void)pickFromViewController:(UIViewController*)vc withCompletion:(void (^)(HSDriveManager *manager, GTLDriveFile *file))completion;
 
+
+/*
+
+Appearance can mostly be managed through the appearance proxy.
+e.g.  [[UINavigationBar appearance] setBackgroundImage: <your image> ];
+ 
+*/
+
+
+/**specify status bar style. Default is UIStatusBarStyleDefault **/
+@property (assign) UIStatusBarStyle preferredStatusBarStyle;
+
 @end

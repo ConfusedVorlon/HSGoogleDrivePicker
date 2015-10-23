@@ -27,6 +27,7 @@
     
     self = [super initWithRootViewController:viewer];
     if (self) {
+        self.preferredStatusBarStyle=UIStatusBarStyleDefault;
         self.modalPresentationStyle=UIModalPresentationPageSheet;
         self.viewer=viewer;
     }
