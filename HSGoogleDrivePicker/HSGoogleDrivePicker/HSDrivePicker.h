@@ -25,6 +25,15 @@
 Appearance can mostly be managed through the appearance proxy.
 e.g.  [[UINavigationBar appearance] setBackgroundImage: <your image> ];
  
+ or to style the segmented control (which is addmittedly wierd)
+ 
+ //selected text
+ [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} forState:UIControlStateSelected];
+ //not selected text
+ [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor greenColor]} forState:UIControlStateNormal];
+ //background
+ [[UIImageView appearanceWhenContainedIn:[UISegmentedControl class],nil] setTintColor:[UIColor blueColor]];
+ 
 */
 
 
