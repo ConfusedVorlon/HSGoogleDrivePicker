@@ -84,7 +84,7 @@ static NSString *const kKeychainItemName = @"Drive API";
     return query;
 }
 
-// Construct a query to get names and IDs of 10 files using the Google Drive API.
+// Construct a query to get names and IDs of files using the Google Drive API.
 - (void)fetchFilesWithCompletionHandler:(void (^)(GTLServiceTicket *ticket, GTLDriveFileList *fileList, NSError *error))handler
 {
     
@@ -93,6 +93,8 @@ static NSString *const kKeychainItemName = @"Drive API";
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
     
     query.q=[self query];
+    query.fields=@"files(id,kind,mimeType,name,size,iconLink)";
+    
     
     query.pageSize = self.maxResults;
     
@@ -101,33 +103,6 @@ static NSString *const kKeychainItemName = @"Drive API";
    
 }
 
-//// Process the response and display output.
-//- (void)displayResultWithTicket:(GTLServiceTicket *)ticket
-//             finishedWithObject:(GTLDriveFileList *)fileList
-//                          error:(NSError *)error
-//{
-//    if (error == nil)
-//    {
-//        NSMutableString *filesString = [[NSMutableString alloc] init];
-//        if (fileList.files.count > 0)
-//        {
-//            [filesString appendString:@"Files:\n"];
-//            for (GTLDriveFile *file in fileList.files)
-//            {
-//                [filesString appendFormat:@"%@ (%@)\n", file.name, file.identifier];
-//            }
-//        }
-//        else
-//        {
-//            [filesString appendString:@"No files found."];
-//        }
-//        NSLog(@"Output: %@",filesString);
-//    }
-//    else
-//    {
-//        NSLog(@"Error: %@",error.localizedDescription);
-//    }
-//}
 
 
 #pragma mark auth controller
