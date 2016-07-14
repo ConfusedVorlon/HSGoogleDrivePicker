@@ -7,7 +7,7 @@
 //
 
 #import "HSDriveManager.h"
-#import "GTMOAuth2ViewControllerTouch.h"
+#import <GTMOAuth2/GTMOAuth2ViewControllerTouch.h>
 
 
 static NSString *const kKeychainItemName = @"Drive API";

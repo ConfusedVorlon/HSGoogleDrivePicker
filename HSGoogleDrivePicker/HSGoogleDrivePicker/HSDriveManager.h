@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GTLDrive.h"
+#import <GoogleAPIClient/GTLDrive.h>
 #import "GTLDriveFile+HS.h"
-#import "GTMSessionFetcher.h"
+#import <GTMSessionFetcher/GTMSessionFetcher.h>
 
 @interface HSDriveManager : NSObject
 

@@ -7,7 +7,8 @@
 //
 
 #import "GTLDriveFile+HS.h"
-#import "GTLDrive.h"
+#import <GoogleAPIClient/GTLDrive.h>
+
 
 @implementation GTLDriveFile (HS_Helpers)
 
