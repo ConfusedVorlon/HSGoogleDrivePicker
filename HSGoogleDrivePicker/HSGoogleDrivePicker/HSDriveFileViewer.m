@@ -176,7 +176,7 @@
     
     if (self.fileList)
     {
-        if (self.fileList.items.count)
+        if (self.fileList.files.count)
         {
             [self.table setHidden:NO];
             [self.table reloadData];
@@ -275,13 +275,13 @@
 
 -(GTLDriveFile*)fileForIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    return [self.fileList.items objectAtIndex:[indexPath row]];
+    return [self.fileList.files objectAtIndex:[indexPath row]];
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.fileList.items count];
+    return [self.fileList.files count];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -306,7 +306,7 @@
     
     if (file)
     {
-        [cell.textLabel setText:file.title];
+        [cell.textLabel setText:file.name];
         [async setImageURL:[NSURL URLWithString:file.iconLink]];
     }
     else

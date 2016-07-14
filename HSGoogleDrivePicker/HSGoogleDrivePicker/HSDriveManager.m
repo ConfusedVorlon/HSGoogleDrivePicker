@@ -46,10 +46,11 @@ static NSString *const kKeychainItemName = @"Drive API";
 
 #pragma mark download
 
--(GTMHTTPFetcher*)downloadFile:(GTLDriveFile*)file toPath:(NSString*)path withCompletionHandler:(void (^)(NSError *error))handler
+-(GTMSessionFetcher*)downloadFile:(GTLDriveFile*)file toPath:(NSString*)path withCompletionHandler:(void (^)(NSError *error))handler
 {
-    GTMHTTPFetcher *fetcher = [self.service.fetcherService fetcherWithURLString:file.downloadUrl];
-    [fetcher setDownloadPath:path];
+    GTMSessionFetcher *fetcher = [self.service.fetcherService fetcherWithURLString:file.downloadUrl];
+    NSURL* destinationUrl=[NSURL fileURLWithPath:path];
+    [fetcher setDestinationFileURL:destinationUrl];
     
     [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
         if (error == nil) {
@@ -93,40 +94,40 @@ static NSString *const kKeychainItemName = @"Drive API";
     
     query.q=[self query];
     
-    query.maxResults = self.maxResults;
+    query.pageSize = self.maxResults;
     
     [self.service executeQuery:query
              completionHandler:handler];
    
 }
 
-// Process the response and display output.
-- (void)displayResultWithTicket:(GTLServiceTicket *)ticket
-             finishedWithObject:(GTLDriveFileList *)files
-                          error:(NSError *)error
-{
-    if (error == nil)
-    {
-        NSMutableString *filesString = [[NSMutableString alloc] init];
-        if (files.items.count > 0)
-        {
-            [filesString appendString:@"Files:\n"];
-            for (GTLDriveFile *file in files)
-            {
-                [filesString appendFormat:@"%@ (%@)\n", file.title, file.identifier];
-            }
-        }
-        else
-        {
-            [filesString appendString:@"No files found."];
-        }
-        NSLog(@"Output: %@",filesString);
-    }
-    else
-    {
-        NSLog(@"Error: %@",error.localizedDescription);
-    }
-}
+//// Process the response and display output.
+//- (void)displayResultWithTicket:(GTLServiceTicket *)ticket
+//             finishedWithObject:(GTLDriveFileList *)fileList
+//                          error:(NSError *)error
+//{
+//    if (error == nil)
+//    {
+//        NSMutableString *filesString = [[NSMutableString alloc] init];
+//        if (fileList.files.count > 0)
+//        {
+//            [filesString appendString:@"Files:\n"];
+//            for (GTLDriveFile *file in fileList.files)
+//            {
+//                [filesString appendFormat:@"%@ (%@)\n", file.name, file.identifier];
+//            }
+//        }
+//        else
+//        {
+//            [filesString appendString:@"No files found."];
+//        }
+//        NSLog(@"Output: %@",filesString);
+//    }
+//    else
+//    {
+//        NSLog(@"Error: %@",error.localizedDescription);
+//    }
+//}
 
 
 #pragma mark auth controller

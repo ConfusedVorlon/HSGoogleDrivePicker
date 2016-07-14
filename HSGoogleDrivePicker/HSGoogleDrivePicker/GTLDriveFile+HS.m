@@ -16,4 +16,16 @@
     return [self.mimeType isEqualToString:@"application/vnd.google-apps.folder"];
 }
 
+-(NSString*)downloadUrl;
+{
+    if (self.identifier.length == 0)
+    {
+        return nil;
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://www.googleapis.com/drive/v3/files/%@?alt=media",
+                           self.identifier];
+    return urlString;
+}
+
 @end

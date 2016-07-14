@@ -11,5 +11,6 @@
 @interface GTLDriveFile (HS_Helpers)
 
 -(BOOL)isFolder;
+-(NSString*)downloadUrl;
 
 @end
