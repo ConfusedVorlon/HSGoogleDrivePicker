@@ -38,6 +38,6 @@ e.g.  [[UINavigationBar appearance] setBackgroundImage: <your image> ];
 
 
 /**specify status bar style. Default is UIStatusBarStyleDefault **/
-@property (assign) UIStatusBarStyle preferredStatusBarStyle;
+-(void)setPreferredStatusBarStyle:(UIStatusBarStyle)thePreferredStatusBarStyle;
 
 @end

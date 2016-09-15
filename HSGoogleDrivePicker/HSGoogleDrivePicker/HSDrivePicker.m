@@ -12,6 +12,7 @@
 @interface HSDrivePicker ()
 
 @property (retain) HSDriveFileViewer *viewer;
+@property (assign) UIStatusBarStyle thePreferredStatusBarStyle;
 
 @end
 
@@ -33,6 +34,16 @@
     }
     return self;
 }
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return self.thePreferredStatusBarStyle;
+}
+
+-(void)setPreferredStatusBarStyle:(UIStatusBarStyle)thePreferredStatusBarStyle {
+    self.thePreferredStatusBarStyle = thePreferredStatusBarStyle;
+}
+
+
 
 -(void)pickFromViewController:(UIViewController*)vc withCompletion:(void (^)(HSDriveManager *manager, GTLDriveFile *file))completion
 {
