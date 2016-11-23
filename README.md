@@ -27,8 +27,8 @@ HSDrivePicker *picker=[[HSDrivePicker alloc] initWithSecret:@"YOUR SECRET HERE"]
 ---
 ## Updating from 1.0 to 2.0
 
-- Use ```[[HSDrivePicker alloc]initWithSecret:]``` instead of ```[[HSDrivePicker alloc]initWithId:Secret:]``
-- Follow the ‘Configure the sign in process’ below
+- Use ```[[HSDrivePicker alloc]initWithSecret:]``` instead of ```[[HSDrivePicker alloc]initWithId:secret:]``
+- Follow the ‘Configure the sign in process’ section below
 
 ---
 ##Installing HSGoogleDrivePicker
@@ -92,9 +92,7 @@ In YourAppDelegate.m
 ---
 ## Usage
 
-Run the example code above using your keys.
-
-The completion handler returns with a GTLDriveFile which has all the info you need. 
+Create and show the picker
 
 `#import "HSDrivePicker.h"`
 
@@ -107,6 +105,8 @@ HSDrivePicker *picker=[[HSDrivePicker alloc] initWithSecret:@"YOUR SECRET HERE"]
                         NSLog(@"selected: %@",file.title);
                     }];
 ```
+
+The completion handler returns with a GTLDriveFile which has all the info you need. 
 
 To download the file, use 
 
