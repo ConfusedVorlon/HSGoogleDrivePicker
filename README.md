@@ -88,9 +88,6 @@ In YourAppDelegate.m
 	return YES
 }
 
-// to support 
-    
-
 ```
 
 ## Usage
