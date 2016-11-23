@@ -24,12 +24,11 @@ HSDrivePicker *picker=[[HSDrivePicker alloc] initWithSecret:@"YOUR SECRET HERE"]
                     }];
 ```
 
-## Getting Started
+---
+## Updating from 1.0 to 2.0
 
-- Install HSGoogleDrivePicker via CocoaPods or by downloading the Source files
-- Follow the Google guide to set up your API keys
-- Run a picker.
-
+- Use ```[[HSDrivePicker alloc]initWithSecret:]``` instead of ```[[HSDrivePicker alloc]initWithId:Secret:]``
+- Follow the ‘Configure the sign in process’ below
 
 ---
 ##Installing HSGoogleDrivePicker
@@ -61,7 +60,7 @@ When completed, your config should look something similar to the following (but 
 
 ![Picker Screenshot](https://raw.githubusercontent.com/ConfusedVorlon/HSGoogleDrivePicker/master/images/url_scheme.png)
 
--Handle the url callback in your app delegate
+- Handle the url callback in your app delegate
 
 In YourAppDelegate.m
 
@@ -90,6 +89,7 @@ In YourAppDelegate.m
 
 ```
 
+---
 ## Usage
 
 Run the example code above using your keys.
@@ -100,8 +100,7 @@ The completion handler returns with a GTLDriveFile which has all the info you ne
 
 ```objective-c
     
-HSDrivePicker *picker=[[HSDrivePicker alloc] initWithId:@"YOUR ID HERE"
-                                                   secret:@"YOUR SECRET HERE"];
+HSDrivePicker *picker=[[HSDrivePicker alloc] initWithSecret:@"YOUR SECRET HERE"];
     
 [picker pickFromViewController:self
                 withCompletion:^(HSDriveManager *manager, GTLDriveFile *file) {
@@ -128,6 +127,7 @@ withCompletionHandler:^(NSError *error) {
 }];
 ```
 
+---
 ## Status
 
 HSGoogleDrivePicker is simplistic and new, but I’m using it in production code. 
