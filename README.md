@@ -16,8 +16,7 @@ This is the API that Google should have written.
 
 ```objective-c
     
-HSDrivePicker *picker=[[HSDrivePicker alloc] initWithId:@"YOUR ID HERE"
-                                                   secret:@"YOUR SECRET HERE"];
+HSDrivePicker *picker=[[HSDrivePicker alloc] initWithSecret:@"YOUR SECRET HERE"];
     
 [picker pickFromViewController:self
                 withCompletion:^(HSDriveManager *manager, GTLDriveFile *file) {
@@ -39,7 +38,7 @@ You can install HSGoogleDrivePicker in your project by using [CocoaPods](https:/
 
 
 ```Ruby
-pod 'HSGoogleDrivePicker', '~> 1.0’
+pod 'HSGoogleDrivePicker', '~> 2.0’
 
 ```
 
@@ -49,7 +48,50 @@ pod 'HSGoogleDrivePicker', '~> 1.0’
 - Follow [Google’s guide](https://developers.google.com/drive/ios/quickstart) (Step 1 only).
 - Enable the Drive API permission. (click on ‘APIs and Auth’, ‘APIs’, then search for ‘Drive’) 
 
+## Configure the sign in process
 
+- Download a [configuration file from Google](https://developers.google.com/mobile/add?platform=ios&cntapi=signin)
+- Add the configuration file to your project
+- Add a URL scheme to your project
+
+1. Open your project configuration: double-click the project name in the left tree view. Select your app from the TARGETS section, then select the Info tab, and expand the URL Types section.
+1. Click the + button, and add a URL scheme for your reversed client ID. To find this value, open the GoogleService-Info.plist configuration file, and look for the REVERSED_CLIENT_ID key. Copy the value of that key, and paste it into the URL Schemes box on the configuration page. Leave the other fields blank.
+
+When completed, your config should look something similar to the following (but with your application-specific values)
+
+![Picker Screenshot](https://raw.githubusercontent.com/ConfusedVorlon/HSGoogleDrivePicker/master/images/url_scheme.png)
+
+-Handle the url callback in your app delegate
+
+In YourAppDelegate.m
+
+`#import "HSDrivePicker.h"`
+
+```objective-c
+
+//Depending on which delegate methods you support…
+
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation 
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+
+//this version works from iOS 9 onwards
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary *)options
+{
+	if ([HSDrivePicker  handleURL:url]) {
+        return YES;
+    }
+
+//Your code for other callbacks
+
+	return YES
+}
+
+// to support 
+    
+
+```
 
 ## Usage
 
