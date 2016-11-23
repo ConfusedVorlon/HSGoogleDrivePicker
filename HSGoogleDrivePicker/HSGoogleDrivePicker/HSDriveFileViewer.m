@@ -8,6 +8,7 @@
 
 #import "HSDriveFileViewer.h"
 #import "HSDriveManager.h"
+#import "HSGIDSignInHandler.h"
 #import "AsyncImageView.h"
 #import "UIScrollView+SVPullToRefresh.h"
 
@@ -37,14 +38,15 @@
 
 
 
-- (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret
+- (instancetype)initWithSecret:(NSString*)secret
 {
     self = [super init];
     if (self)
     {
         [self setTitle:@"Google Drive"];
         
-        self.manager=[[HSDriveManager alloc] initWithId:clientId secret:secret];
+        self.manager=[[HSDriveManager alloc] initWithId:[self clientId]
+                                                 secret:secret];
         self.modalPresentationStyle=UIModalPresentationPageSheet;
         
         UIGraphicsBeginImageContext(CGSizeMake(40, 40));
@@ -55,6 +57,14 @@
         self.folderTrail=[NSMutableArray arrayWithObject:@"root"];
     }
     return self;
+}
+    
+-(NSString*)clientId
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSString *clientID = [dict objectForKey:@"CLIENT_ID"];
+    return clientID;
 }
 
 
@@ -107,6 +117,12 @@
                                                                       options:NSLayoutFormatDirectionLeftToRight
                                                                       metrics:nil
                                                                         views:views]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(authFailed)
+                                                 name:HSGIDSignInFailedNotification
+                                               object:nil];
+    
 
     
     [self setupButtons];
@@ -114,23 +130,49 @@
     
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 // When the view appears, ensure that the Drive API service is authorized, and perform API calls.
 - (void)viewDidAppear:(BOOL)animated
 {
-    UIViewController *authVC=[self.manager authorisationViewController];
     
-    if (authVC)
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(authUpdated)
+                                                 name:HSGIDSignInChangedNotification
+                                               object:nil];
+    
+    if ([HSGIDSignInHandler canAuthorise])
     {
-        // Not yet authorized, request authorization by pushing the login UI onto the UI stack.
-        UINavigationController *nc=(UINavigationController *)[self parentViewController];
-        [nc pushViewController:authVC animated:YES];
-        
+        //after first sign in, the authoriser is updated before viewDidAppear is called
+        [self.manager updateAuthoriser];
+        [self getFiles];
     }
     else
     {
-        [self getFiles];
+        [HSGIDSignInHandler signInFromViewController:self];
     }
+}
+    
+-(void) viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:HSGIDSignInChangedNotification
+                                                  object:nil];
+    [super viewWillDisappear:animated];
+}
+    
+-(void)authUpdated
+{
+    [self.manager updateAuthoriser];
+    [self getFiles];
+}
+    
+-(void)authFailed
+{
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 -(void)cancel:(id)sender

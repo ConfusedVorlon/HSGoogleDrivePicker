@@ -12,8 +12,10 @@
 
 @interface HSDrivePicker : UINavigationController
 
-/** Provide your API id & secret **/
-- (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret;
+/** Provide your API secret 
+    Note that the client ID is read from your GoogleService-Info.plist
+ **/
+- (instancetype)initWithSecret:(NSString*)secret;
 
 /** Present the picker from your view controller. It will present as a modal form.
  The completion returns both the file, and the authorised manager which can be used to download the file **/
@@ -39,5 +41,13 @@ e.g.  [[UINavigationBar appearance] setBackgroundImage: <your image> ];
 
 /**specify status bar style. Default is UIStatusBarStyleDefault **/
 -(void)setPreferredStatusBarStyle:(UIStatusBarStyle)thePreferredStatusBarStyle;
+  
+    
+/**
+ Handle the url callback from google authentication
+
+ @param url the callback url
+ */
++(Boolean)handleURL:(NSURL*)url;
 
 @end

@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.dependency 'AsyncImageView'
   s.dependency 'GoogleAPIClient/Drive'
-  s.dependency 'GTMOAuth2'
+  s.dependency 'Google/SignIn'
   s.dependency 'SVPullToRefresh'
 
 end

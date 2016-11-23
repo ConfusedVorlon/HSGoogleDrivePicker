@@ -8,6 +8,9 @@
 
 #import "HSDrivePicker.h"
 #import "HSDriveFileViewer.h"
+#import "HSGIDSignInHandler.h"
+
+#import <Google/SignIn.h>
 
 @interface HSDrivePicker ()
 
@@ -17,10 +20,21 @@
 @end
 
 @implementation HSDrivePicker
-
-- (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret
+    
++(Boolean)handleURL:(NSURL*)url
 {
-    HSDriveFileViewer *viewer=[[HSDriveFileViewer alloc] initWithId:clientId secret:secret];
+    [HSGIDSignInHandler sharedInstance];
+    if ([[GIDSignIn sharedInstance] handleURL:url
+                            sourceApplication:@"com.apple.SafariViewService"
+                                   annotation:nil]) {
+        return YES;
+        
+    }
+}
+
+- (instancetype)initWithSecret:(NSString*)secret
+{
+    HSDriveFileViewer *viewer=[[HSDriveFileViewer alloc] initWithSecret:secret];
     if (!viewer)
     {
         return NULL;

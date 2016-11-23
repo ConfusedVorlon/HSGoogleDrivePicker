@@ -14,9 +14,9 @@
 @interface HSDriveManager : NSObject
 
 - (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret;
-
-/** returns auth view if it is required. Returns NULL if user is logged in **/
-- (UIViewController*)authorisationViewController;
+    
+ /** called by view controller when auth changes after a sign in **/
+-(void)updateAuthoriser;
 
 /** runs a fetch with the current search settings. Cancels any outstanding fetch **/
 - (void)fetchFilesWithCompletionHandler:(void (^)(GTLServiceTicket *ticket, GTLDriveFileList *fileList, NSError *error))handler;

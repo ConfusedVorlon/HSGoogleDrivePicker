@@ -18,7 +18,7 @@ typedef void (^GDriveFileViewerCompletionBlock)(HSDriveManager *manager, GTLDriv
 /** completion called when file viewer is closed **/
 @property (copy) GDriveFileViewerCompletionBlock completion;
 
-/** Initialise the viewer with your API secred and id **/
-- (instancetype)initWithId:(NSString*)clientId secret:(NSString*)secret;
+/** Initialise the viewer with your API secret **/
+- (instancetype)initWithSecret:(NSString*)secret;
 
 @end
