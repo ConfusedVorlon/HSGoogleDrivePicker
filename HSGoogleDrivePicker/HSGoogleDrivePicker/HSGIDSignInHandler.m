@@ -73,6 +73,21 @@
     });
     
 }
+
++(void)signOutFromViewController:(UIViewController*)vc {
+    
+    [self sharedInstance];
+    
+    //in iOS 8, the sign-in is called with view_did_appear before the signIn_didSignIn is fired on a queue
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [GIDSignIn sharedInstance].uiDelegate = vc;
+        [[GIDSignIn sharedInstance] disconnect];
+        [[GIDSignIn sharedInstance] signOut];
+        
+    });
+    
+}
     
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user  withError:(NSError *)error
 {
@@ -99,6 +114,7 @@
 - (void)signIn:(GIDSignIn *)signIn didDisconnectWithUser:(GIDGoogleUser *)user withError:(NSError *)error
 {
     NSLog(@"User disconnected");
+    self.authoriser = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:HSGIDSignInChangedNotification
                                                         object:self];
 }

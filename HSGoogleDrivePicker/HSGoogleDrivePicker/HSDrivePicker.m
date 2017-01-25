@@ -20,7 +20,18 @@
 @end
 
 @implementation HSDrivePicker
+
++(BOOL)handleURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     
+    [HSGIDSignInHandler sharedInstance];
+    if ([[GIDSignIn sharedInstance] handleURL:url
+                            sourceApplication:sourceApplication
+                                   annotation:annotation]) {
+        return YES;
+        
+    }
+}
+
 +(Boolean)handleURL:(NSURL*)url
 {
     [HSGIDSignInHandler sharedInstance];

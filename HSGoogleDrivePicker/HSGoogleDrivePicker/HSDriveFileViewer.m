@@ -175,6 +175,12 @@
                              completion:nil];
 }
 
+- (void)signOut:(id)sender
+{
+    [HSGIDSignInHandler signOutFromViewController:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(void)cancel:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -257,6 +263,10 @@
     
     [self.navigationItem setLeftBarButtonItem:doneItem
                                       animated:YES];
+    
+    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut:)];
+    [signOutButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Medium" size:18.0], NSKernAttributeName: @2.0} forState:UIControlStateNormal];
+    [self.navigationItem setRightBarButtonItem:signOutButton];
 }
 
 -(void)updateButtons

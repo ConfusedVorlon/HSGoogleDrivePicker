@@ -50,4 +50,8 @@ e.g.  [[UINavigationBar appearance] setBackgroundImage: <your image> ];
  */
 +(Boolean)handleURL:(NSURL*)url;
 
++(BOOL)handleURL:(NSURL *)url
+        sourceApplication:(NSString *)sourceApplication
+        annotation:(id)annotation;
+
 @end
