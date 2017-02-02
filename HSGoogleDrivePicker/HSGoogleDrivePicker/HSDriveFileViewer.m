@@ -28,6 +28,9 @@
 @property (retain) UIBarButtonItem *segmentedControlButtonItem;
 @property (retain) NSMutableArray *folderTrail;
 @property (assign) BOOL showShared;
+@property (retain) NSString * singInLabel;
+@property (retain) NSString * singOutLabel;
+@property (retain) UIBarButtonItem *signOutButton;
 
 
 
@@ -37,13 +40,14 @@
 @implementation HSDriveFileViewer
 
 
-
 - (instancetype)initWithSecret:(NSString*)secret
 {
     self = [super init];
     if (self)
     {
         [self setTitle:@"Google Drive"];
+        self.signInLabel = @"Sign In";
+        self.signOutLabel = @"Sign Out";
         
         self.manager=[[HSDriveManager alloc] initWithId:[self clientId]
                                                  secret:secret];
@@ -59,6 +63,14 @@
     return self;
 }
     
+- (void) setSignInLabel:(NSString*)signInLabelParam{
+    self.signInLabel = signInLabelParam;
+}
+
+- (void) setSignOutLabel:(NSString*)signOutLabelParam{
+    self.signOutLabel = signOutLabelParam;
+}
+
 -(NSString*)clientId
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
@@ -149,10 +161,12 @@
         //after first sign in, the authoriser is updated before viewDidAppear is called
         [self.manager updateAuthoriser];
         [self getFiles];
+        [self.signOutButton setTitle:self.signOutLabel];
     }
     else
     {
-        [HSGIDSignInHandler signInFromViewController:self];
+    //     [HSGIDSignInHandler signInFromViewController:self];
+        [self.signOutButton setTitle:self.signInLabel];
     }
 }
     
@@ -273,7 +287,7 @@
     [self.navigationItem setLeftBarButtonItem:doneItem
                                       animated:YES];
     
-    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(toggleSign:)];
+    signOutButton = [[UIBarButtonItem alloc] initWithTitle:self.signOutLabel style:UIBarButtonItemStylePlain target:self action:@selector(toggleSign:)];
     [signOutButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Medium" size:18.0], NSKernAttributeName: @2.0} forState:UIControlStateNormal];
     [self.navigationItem setRightBarButtonItem:signOutButton];
 }
