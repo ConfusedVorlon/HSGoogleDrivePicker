@@ -161,11 +161,20 @@
         //after first sign in, the authoriser is updated before viewDidAppear is called
         [self.manager updateAuthoriser];
         [self getFiles];
-        [_signOutButton setTitle:_signOutLabel];
+        //[_signOutButton setTitle:_signOutLabel];
     }
     else
     {
-    //     [HSGIDSignInHandler signInFromViewController:self];
+        //[HSGIDSignInHandler signInFromViewController:self];
+        //[_signOutButton setTitle:_signInLabel];
+    }
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    if ([HSGIDSignInHandler canAuthorise]){
+        [_signOutButton setTitle:_signOutLabel];
+    }
+    else{
         [_signOutButton setTitle:_signInLabel];
     }
 }
@@ -195,12 +204,14 @@
     if ([HSGIDSignInHandler canAuthorise]){
         [HSGIDSignInHandler signOutFromViewController:self];
         [self dismissViewControllerAnimated:YES completion:nil];
+        [_signOutButton setTitle:_signInLabel];
         
     }
 	// Sign In
     else
     {
         [HSGIDSignInHandler signInFromViewController:self];
+        [_signOutButton setTitle:_signOutLabel];
     }
 }
 
