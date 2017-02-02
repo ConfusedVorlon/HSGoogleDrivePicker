@@ -21,6 +21,10 @@
  The completion returns both the file, and the authorised manager which can be used to download the file **/
 -(void)pickFromViewController:(UIViewController*)vc withCompletion:(void (^)(HSDriveManager *manager, GTLDriveFile *file))completion;
 
+/** Set connection button label for sign-in and out **/
+- (void) setSignInLabel:(NSString*)signInLabelParam;
+- (void) setSignOutLabel:(NSString*)signOutLabelParam;
+
 
 /*
 

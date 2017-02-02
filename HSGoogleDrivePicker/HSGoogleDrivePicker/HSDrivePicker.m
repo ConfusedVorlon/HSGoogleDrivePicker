@@ -60,6 +60,18 @@
     return self;
 }
 
+- (void) setSignInLabel:(NSString*)signInLabelParam{
+    if (self.viewer) {
+        [self.viewer setSignInLabel:signInLabelParam];
+    }
+}
+
+- (void) setSignOutLabel:(NSString*)signOutLabelParam{
+    if (self.viewer) {
+        [self.viewer setSignOutLabel:signOutLabelParam];
+    }
+}
+
 -(UIStatusBarStyle)preferredStatusBarStyle {
     return self.thePreferredStatusBarStyle;
 }

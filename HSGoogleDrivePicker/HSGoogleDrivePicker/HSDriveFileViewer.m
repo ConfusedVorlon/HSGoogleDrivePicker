@@ -161,16 +161,9 @@
         //after first sign in, the authoriser is updated before viewDidAppear is called
         [self.manager updateAuthoriser];
         [self getFiles];
-    }
-}
-
-- (void) viewWillAppear:(BOOL)animated{
-    if ([HSGIDSignInHandler canAuthorise])
-    {
         [_signOutButton setTitle:_signOutLabel];
     }
-    else
-    {
+    else{
         [_signOutButton setTitle:_signInLabel];
     }
 }
