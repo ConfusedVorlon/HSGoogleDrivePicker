@@ -20,5 +20,6 @@ typedef void (^GDriveFileViewerCompletionBlock)(HSDriveManager *manager, GTLDriv
 
 /** Initialise the viewer with your API secret **/
 - (instancetype)initWithSecret:(NSString*)secret;
-
+- (void) setSignInLabel:(NSString*)signInLabelParam;
+- (void) setSignOutLabel:(NSString*)signOutLabelParam;
 @end
