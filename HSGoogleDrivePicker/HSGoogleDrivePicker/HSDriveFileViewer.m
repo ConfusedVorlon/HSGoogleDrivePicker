@@ -161,23 +161,20 @@
         //after first sign in, the authoriser is updated before viewDidAppear is called
         [self.manager updateAuthoriser];
         [self getFiles];
-        //[_signOutButton setTitle:_signOutLabel];
-    }
-    else
-    {
-        //[HSGIDSignInHandler signInFromViewController:self];
-        //[_signOutButton setTitle:_signInLabel];
     }
 }
 
--(void) viewWillAppear:(BOOL)animated{
-    if ([HSGIDSignInHandler canAuthorise]){
+- (void) viewWillAppear:(BOOL)animated{
+    if ([HSGIDSignInHandler canAuthorise])
+    {
         [_signOutButton setTitle:_signOutLabel];
     }
-    else{
+    else
+    {
         [_signOutButton setTitle:_signInLabel];
     }
 }
+
     
 -(void) viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self
@@ -190,6 +187,7 @@
 {
     [self.manager updateAuthoriser];
     [self getFiles];
+    [_signOutButton setTitle:_signOutLabel];
 }
     
 -(void)authFailed
@@ -200,14 +198,14 @@
 
 - (void)toggleSign:(id)sender
 {
-	// Sign Out
+    // Sign Out
     if ([HSGIDSignInHandler canAuthorise]){
         [HSGIDSignInHandler signOutFromViewController:self];
         [self dismissViewControllerAnimated:YES completion:nil];
         [_signOutButton setTitle:_signInLabel];
         
     }
-	// Sign In
+    // Sign In
     else
     {
         [HSGIDSignInHandler signInFromViewController:self];
