@@ -66,11 +66,11 @@
     [self sharedInstance];
     
     //in iOS 8, the sign-in is called with view_did_appear before the signIn_didSignIn is fired on a queue
-    //dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         
         [GIDSignIn sharedInstance].uiDelegate = vc;
         [[GIDSignIn sharedInstance] signIn];
-    //});
+    });
     
 }
 
@@ -79,13 +79,13 @@
     [self sharedInstance];
     
     //in iOS 8, the sign-in is called with view_did_appear before the signIn_didSignIn is fired on a queue
-    //dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         
         [GIDSignIn sharedInstance].uiDelegate = vc;
         [[GIDSignIn sharedInstance] disconnect];
         [[GIDSignIn sharedInstance] signOut];
         
-    //});
+    });
     
 }
     
