@@ -64,11 +64,11 @@
 }
 
 - (void) setSignInLabel:(NSString*)signInLabelParam{
-    self.signInLabel = signInLabelParam;
+    _signInLabel = signInLabelParam;
 }
 
 - (void) setSignOutLabel:(NSString*)signOutLabelParam{
-    self.signOutLabel = signOutLabelParam;
+    _signOutLabel = signOutLabelParam;
 }
 
 -(NSString*)clientId
