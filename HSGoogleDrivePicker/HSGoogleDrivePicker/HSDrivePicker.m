@@ -26,7 +26,7 @@
     [HSGIDSignInHandler sharedInstance];
     if ([[GIDSignIn sharedInstance] handleURL:url
                             sourceApplication:sourceApplication
-                                   annotation:annotation]) {
+                                   annotation:nil]) {
         return YES;
         
     }
