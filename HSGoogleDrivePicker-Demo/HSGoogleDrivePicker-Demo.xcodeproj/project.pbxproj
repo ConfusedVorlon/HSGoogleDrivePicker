@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2114DC835518664B5C5DEB19 /* libPods-HSGoogleDrivePicker-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0429639F551B3B733D2D6E9F /* libPods-HSGoogleDrivePicker-Demo.a */; };
+		D44EDE651F41CF35006E9179 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D44EDE641F41CF35006E9179 /* main.m */; };
+		D44EDE681F41CF35006E9179 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D44EDE671F41CF35006E9179 /* AppDelegate.m */; };
+		D44EDE6B1F41CF35006E9179 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44EDE6A1F41CF35006E9179 /* ViewController.m */; };
+		D44EDE6E1F41CF35006E9179 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE6C1F41CF35006E9179 /* Main.storyboard */; };
+		D44EDE701F41CF35006E9179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE6F1F41CF35006E9179 /* Assets.xcassets */; };
+		D44EDE731F41CF35006E9179 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE711F41CF35006E9179 /* LaunchScreen.storyboard */; };
+		D44EDE7B1F41D581006E9179 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE7A1F41D581006E9179 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0429639F551B3B733D2D6E9F /* libPods-HSGoogleDrivePicker-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HSGoogleDrivePicker-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0362764907BF2C5AD3E8308 /* Pods-HSGoogleDrivePicker-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSGoogleDrivePicker-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		D44EDE601F41CF35006E9179 /* HSGoogleDrivePicker-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HSGoogleDrivePicker-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44EDE641F41CF35006E9179 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D44EDE661F41CF35006E9179 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D44EDE671F41CF35006E9179 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D44EDE691F41CF35006E9179 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D44EDE6A1F41CF35006E9179 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D44EDE6D1F41CF35006E9179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D44EDE6F1F41CF35006E9179 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D44EDE721F41CF35006E9179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D44EDE741F41CF35006E9179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D44EDE7A1F41D581006E9179 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F6797EFFC6604C6B831C7BDB /* Pods-HSGoogleDrivePicker-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSGoogleDrivePicker-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D44EDE5D1F41CF35006E9179 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2114DC835518664B5C5DEB19 /* libPods-HSGoogleDrivePicker-Demo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A2BEDF4E43F685D584B614E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6797EFFC6604C6B831C7BDB /* Pods-HSGoogleDrivePicker-Demo.debug.xcconfig */,
+				B0362764907BF2C5AD3E8308 /* Pods-HSGoogleDrivePicker-Demo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		812D0BEE10925ECF626427DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0429639F551B3B733D2D6E9F /* libPods-HSGoogleDrivePicker-Demo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D44EDE571F41CF35006E9179 = {
+			isa = PBXGroup;
+			children = (
+				D44EDE621F41CF35006E9179 /* HSGoogleDrivePicker-Demo */,
+				D44EDE611F41CF35006E9179 /* Products */,
+				4A2BEDF4E43F685D584B614E /* Pods */,
+				812D0BEE10925ECF626427DD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D44EDE611F41CF35006E9179 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D44EDE601F41CF35006E9179 /* HSGoogleDrivePicker-Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D44EDE621F41CF35006E9179 /* HSGoogleDrivePicker-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				D44EDE661F41CF35006E9179 /* AppDelegate.h */,
+				D44EDE671F41CF35006E9179 /* AppDelegate.m */,
+				D44EDE691F41CF35006E9179 /* ViewController.h */,
+				D44EDE6A1F41CF35006E9179 /* ViewController.m */,
+				D44EDE6C1F41CF35006E9179 /* Main.storyboard */,
+				D44EDE6F1F41CF35006E9179 /* Assets.xcassets */,
+				D44EDE711F41CF35006E9179 /* LaunchScreen.storyboard */,
+				D44EDE7A1F41D581006E9179 /* GoogleService-Info.plist */,
+				D44EDE741F41CF35006E9179 /* Info.plist */,
+				D44EDE631F41CF35006E9179 /* Supporting Files */,
+			);
+			path = "HSGoogleDrivePicker-Demo";
+			sourceTree = "<group>";
+		};
+		D44EDE631F41CF35006E9179 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D44EDE641F41CF35006E9179 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D44EDE5F1F41CF35006E9179 /* HSGoogleDrivePicker-Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D44EDE771F41CF35006E9179 /* Build configuration list for PBXNativeTarget "HSGoogleDrivePicker-Demo" */;
+			buildPhases = (
+				4DBF733847040014C344548C /* [CP] Check Pods Manifest.lock */,
+				D44EDE5C1F41CF35006E9179 /* Sources */,
+				D44EDE5D1F41CF35006E9179 /* Frameworks */,
+				D44EDE5E1F41CF35006E9179 /* Resources */,
+				F030355666273E870A1C1000 /* [CP] Embed Pods Frameworks */,
+				D94F04BCE0589DEF14F1D604 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HSGoogleDrivePicker-Demo";
+			productName = "HSGoogleDrivePicker-Demo";
+			productReference = D44EDE601F41CF35006E9179 /* HSGoogleDrivePicker-Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D44EDE581F41CF35006E9179 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = HobbyistSoftware;
+				TargetAttributes = {
+					D44EDE5F1F41CF35006E9179 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = JHV5RC82C3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = D44EDE5B1F41CF35006E9179 /* Build configuration list for PBXProject "HSGoogleDrivePicker-Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D44EDE571F41CF35006E9179;
+			productRefGroup = D44EDE611F41CF35006E9179 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D44EDE5F1F41CF35006E9179 /* HSGoogleDrivePicker-Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D44EDE5E1F41CF35006E9179 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44EDE731F41CF35006E9179 /* LaunchScreen.storyboard in Resources */,
+				D44EDE7B1F41D581006E9179 /* GoogleService-Info.plist in Resources */,
+				D44EDE701F41CF35006E9179 /* Assets.xcassets in Resources */,
+				D44EDE6E1F41CF35006E9179 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4DBF733847040014C344548C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HSGoogleDrivePicker-Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D94F04BCE0589DEF14F1D604 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo-resources.sh",
+				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F030355666273E870A1C1000 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D44EDE5C1F41CF35006E9179 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44EDE6B1F41CF35006E9179 /* ViewController.m in Sources */,
+				D44EDE681F41CF35006E9179 /* AppDelegate.m in Sources */,
+				D44EDE651F41CF35006E9179 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D44EDE6C1F41CF35006E9179 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D44EDE6D1F41CF35006E9179 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D44EDE711F41CF35006E9179 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D44EDE721F41CF35006E9179 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D44EDE751F41CF35006E9179 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D44EDE761F41CF35006E9179 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D44EDE781F41CF35006E9179 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6797EFFC6604C6B831C7BDB /* Pods-HSGoogleDrivePicker-Demo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JHV5RC82C3;
+				INFOPLIST_FILE = "HSGoogleDrivePicker-Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.HobbyistSoftware.HSGoogleDrivePicker-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D44EDE791F41CF35006E9179 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0362764907BF2C5AD3E8308 /* Pods-HSGoogleDrivePicker-Demo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JHV5RC82C3;
+				INFOPLIST_FILE = "HSGoogleDrivePicker-Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.HobbyistSoftware.HSGoogleDrivePicker-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D44EDE5B1F41CF35006E9179 /* Build configuration list for PBXProject "HSGoogleDrivePicker-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D44EDE751F41CF35006E9179 /* Debug */,
+				D44EDE761F41CF35006E9179 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D44EDE771F41CF35006E9179 /* Build configuration list for PBXNativeTarget "HSGoogleDrivePicker-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D44EDE781F41CF35006E9179 /* Debug */,
+				D44EDE791F41CF35006E9179 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D44EDE581F41CF35006E9179 /* Project object */;
+}
