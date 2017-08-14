@@ -20,6 +20,8 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *pickedFile;
+
 @end
 
 @implementation ViewController
@@ -42,7 +44,7 @@
     
     [picker pickFromViewController:self
                     withCompletion:^(HSDriveManager *manager, GTLDriveFile *file) {
-                        NSLog(@"selected: %@",file.name);
+                        self.pickedFile.text = [NSString stringWithFormat: @"selected: %@",file.name];
                     }];
 }
 

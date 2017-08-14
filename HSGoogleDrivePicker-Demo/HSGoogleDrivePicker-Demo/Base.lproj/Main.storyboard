@@ -35,17 +35,29 @@
                                     <action selector="pickFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p7V-pm-oWF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1O-Ql-1Wr">
+                                <rect key="frame" x="16" y="128" width="343" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Rhx-ch-V4H" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="0eH-fU-7Vy"/>
+                            <constraint firstItem="C1O-Ql-1Wr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="F05-NZ-0Yw"/>
                             <constraint firstAttribute="trailing" secondItem="8g4-aU-LCE" secondAttribute="trailing" id="P6t-Hk-kKf"/>
+                            <constraint firstItem="C1O-Ql-1Wr" firstAttribute="top" secondItem="Rhx-ch-V4H" secondAttribute="bottom" constant="8" id="WAh-WI-psG"/>
+                            <constraint firstItem="C1O-Ql-1Wr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="aZR-j7-ZDd"/>
                             <constraint firstItem="8g4-aU-LCE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bLs-8a-p8G"/>
                             <constraint firstItem="Rhx-ch-V4H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jQq-T4-2rz"/>
                             <constraint firstItem="Rhx-ch-V4H" firstAttribute="top" secondItem="8g4-aU-LCE" secondAttribute="bottom" constant="26" id="lOK-nw-g97"/>
                             <constraint firstItem="8g4-aU-LCE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="lxb-8l-EPG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pickedFile" destination="C1O-Ql-1Wr" id="MTF-41-Fjo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
