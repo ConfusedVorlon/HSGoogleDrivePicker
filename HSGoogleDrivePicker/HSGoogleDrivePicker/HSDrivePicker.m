@@ -30,6 +30,8 @@
         return YES;
         
     }
+    
+    return NO;
 }
 
 - (instancetype)initWithSecret:(NSString*)secret

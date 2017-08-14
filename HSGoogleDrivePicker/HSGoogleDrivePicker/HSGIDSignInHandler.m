@@ -61,7 +61,7 @@
     return NO;
 }
     
-+(void)signInFromViewController:(UIViewController*)vc {
++(void)signInFromViewController:(UIViewController<GIDSignInUIDelegate>*)vc {
     
     [self sharedInstance];
     

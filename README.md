@@ -84,7 +84,7 @@ In YourAppDelegate.m
 
 //Your code for other callbacks
 
-	return YES
+	return YES;
 }
 
 ```
