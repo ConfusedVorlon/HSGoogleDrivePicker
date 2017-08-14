@@ -27,7 +27,7 @@ HSDrivePicker *picker=[[HSDrivePicker alloc] initWithSecret:@"YOUR SECRET HERE"]
 ---
 ## Updating from 1.0 to 2.0
 
-- Use ```[[HSDrivePicker alloc]initWithSecret:]``` instead of ```[[HSDrivePicker alloc]initWithId:secret:]``
+- Use ```[[HSDrivePicker alloc]initWithSecret:]``` instead of ```[[HSDrivePicker alloc]initWithId:secret:]```
 - Follow the ‘Configure the sign in process’ section below
 
 ---
