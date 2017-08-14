@@ -20,7 +20,18 @@
 @end
 
 @implementation HSDrivePicker
+
++(BOOL)handleURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     
+    [HSGIDSignInHandler sharedInstance];
+    if ([[GIDSignIn sharedInstance] handleURL:url
+                            sourceApplication:sourceApplication
+                                   annotation:annotation]) {
+        return YES;
+        
+    }
+}
+
 +(Boolean)handleURL:(NSURL*)url
 {
     [HSGIDSignInHandler sharedInstance];
@@ -49,6 +60,18 @@
         self.viewer=viewer;
     }
     return self;
+}
+
+- (void) setSignInLabel:(NSString*)signInLabelParam{
+    if (self.viewer) {
+        [self.viewer setSignInLabel:signInLabelParam];
+    }
+}
+
+- (void) setSignOutLabel:(NSString*)signOutLabelParam{
+    if (self.viewer) {
+        [self.viewer setSignOutLabel:signOutLabelParam];
+    }
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle {
