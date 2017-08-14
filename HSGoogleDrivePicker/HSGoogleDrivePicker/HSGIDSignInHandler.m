@@ -94,11 +94,18 @@
         [av show];
     }
 }
-    
-    
+
++(void)signOut
+{
+    [[GIDSignIn sharedInstance] disconnect];
+    [[GIDSignIn sharedInstance] signOut];
+}
+
+
 - (void)signIn:(GIDSignIn *)signIn didDisconnectWithUser:(GIDGoogleUser *)user withError:(NSError *)error
 {
     NSLog(@"User disconnected");
+    self.authoriser = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:HSGIDSignInChangedNotification
                                                         object:self];
 }

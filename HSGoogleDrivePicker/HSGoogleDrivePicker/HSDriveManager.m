@@ -39,6 +39,7 @@ static NSString *const kKeychainItemName = @"Drive API";
         
         self.folderId=@"root";
         self.maxResults=1000;
+        self.signOutLabel = @"Sign out";
         
     }
     return self;

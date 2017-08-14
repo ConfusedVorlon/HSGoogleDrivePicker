@@ -155,6 +155,8 @@
         self.shouldSignInOnAppear = NO;
         [HSGIDSignInHandler signInFromViewController:self];
     }
+    
+    [self updateRightButton];
 
 }
 
@@ -172,7 +174,25 @@
     [self.manager updateAuthoriser];
     [self getFiles];
 }
-    
+
+-(void)updateRightButton {
+    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc]
+                                      initWithTitle:self.manager.signOutLabel
+                                      style:UIBarButtonItemStylePlain
+                                      target:self
+                                      action:@selector(signOut)];
+
+    [self.navigationItem setRightBarButtonItem:signOutButton];
+
+}
+
+-(void)signOut
+{
+    [HSGIDSignInHandler signOut];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+}
+
 -(void)authFailed
 {
     [self dismissViewControllerAnimated:YES

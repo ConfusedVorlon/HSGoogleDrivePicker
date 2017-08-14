@@ -36,6 +36,9 @@
 @property (assign) NSInteger maxResults;
 /** Default is YES. This is not recommended by Google, but I don't want to implement multi-page logic **/
 @property (assign) BOOL autoFetchPages;
+/** Default is 'Sign out'**/
+@property (retain) NSString *signOutLabel;
+
 
 
 @end
