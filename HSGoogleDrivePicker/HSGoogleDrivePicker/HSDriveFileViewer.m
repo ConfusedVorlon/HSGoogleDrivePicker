@@ -150,12 +150,16 @@
         [self.manager updateAuthoriser];
         [self getFiles];
     }
-    else
+    else if (self.shouldSignInOnAppear)
     {
+        self.shouldSignInOnAppear = NO;
         [HSGIDSignInHandler signInFromViewController:self];
     }
+
 }
-    
+
+
+
 -(void) viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:HSGIDSignInChangedNotification

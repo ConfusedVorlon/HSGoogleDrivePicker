@@ -15,10 +15,10 @@
 @interface HSGIDSignInHandler : NSObject <GIDSignInDelegate>
 
     
-    + (HSGIDSignInHandler *)sharedInstance;
+    + (HSGIDSignInHandler *_Nonnull)sharedInstance;
     
-    +(id<GTMFetcherAuthorizationProtocol>)authoriser;
+    +(nonnull id <GTMFetcherAuthorizationProtocol>)authoriser;
     +(BOOL)canAuthorise;
-    +(void)signInFromViewController:(UIViewController*)vc;
-    
+    +(void)signInFromViewController:(UIViewController*_Nonnull)vc;
+
 @end

@@ -21,4 +21,7 @@ typedef void (^GDriveFileViewerCompletionBlock)(HSDriveManager *manager, GTLDriv
 /** Initialise the viewer with your API secret **/
 - (instancetype)initWithSecret:(NSString*)secret;
 
+/** tells view controller to pop up signin sheet if appropriate once it is visible **/
+@property (assign) BOOL shouldSignInOnAppear;
+
 @end

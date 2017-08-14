@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.author             = { "Rob" => "Rob@HobbyistSoftware.com" }
 
-  s.platform     = :ios, "7.0"
+  s.platform     = :ios, "8.0"
 
   s.source       = { :git => "https://github.com/ConfusedVorlon/HSGoogleDrivePicker.git", :tag => "2.0.0" } 
   s.source_files  = "HSGoogleDrivePicker/HSGoogleDrivePicker"

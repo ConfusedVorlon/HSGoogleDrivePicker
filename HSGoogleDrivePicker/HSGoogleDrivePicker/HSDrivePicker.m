@@ -17,6 +17,8 @@
 @property (retain) HSDriveFileViewer *viewer;
 @property (assign) UIStatusBarStyle thePreferredStatusBarStyle;
 
+
+
 @end
 
 @implementation HSDrivePicker
@@ -64,10 +66,12 @@
 -(void)pickFromViewController:(UIViewController*)vc withCompletion:(void (^)(HSDriveManager *manager, GTLDriveFile *file))completion
 {
     self.viewer.completion=completion;
+    self.viewer.shouldSignInOnAppear = true;
     
     [vc presentViewController:self
                        animated:YES
                      completion:nil];
+    
 }
 
 - (void)downloadFileContentWithService:(GTLServiceDrive *)service
