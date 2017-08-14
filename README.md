@@ -44,7 +44,7 @@ pod 'HSGoogleDrivePicker', '~> 2.0’
 
 ## Getting your API keys
 
-- Follow [Google’s guide](https://developers.google.com/drive/ios/quickstart) (Step 1 only).
+- Follow [Google’s guide](https://developers.google.com/drive/v3/web/quickstart/ios) (Step 1 only).
 - Enable the Drive API permission. (click on ‘APIs and Auth’, ‘APIs’, then search for ‘Drive’) 
 
 ## Configure the sign in process
