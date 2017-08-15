@@ -44,9 +44,27 @@
     
     [picker pickFromViewController:self
                     withCompletion:^(HSDriveManager *manager, GTLDriveFile *file) {
+                        //update the label
                         self.pickedFile.text = [NSString stringWithFormat: @"selected: %@",file.name];
+                        
+                        //Download the file
+                        NSString *destinationPath = [NSTemporaryDirectory() stringByAppendingPathComponent:file.name];
+                        [manager downloadFile:file toPath:destinationPath withCompletionHandler:^(NSError *error) {
+                            
+                            if (error)
+                            {
+                                NSLog(@"Error downloading : %@", error.localizedDescription);
+                            }
+                            else
+                            {
+                                NSLog(@"Success downloading to : %@", destinationPath);
+                            }
+                            
+                        }];
                     }];
 }
+
+
 
 
 
