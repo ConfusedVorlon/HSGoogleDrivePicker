@@ -27,19 +27,14 @@ open class HSDriveManager {
     //* Default is 'Sign out'*
     open var signOutLabel:String = "Sign out"
     
-    private var clientId:String
-    private var clientSecret:String
     private var service: GTLServiceDrive?
     
-    init(clientId newId: String, secret newSecret: String) {
+    init() {
 
-        clientId = newId
-        clientSecret = newSecret
-        
         // Initialize the Drive API service & load existing credentials from the keychain if available.
         service = GTLServiceDrive()
         
-        service?.authorizer = HSGIDSignInHandler.authoriser()
+        service?.authorizer = HSGIDSignInHandler.authoriser
     }
     
     // MARK: download
@@ -111,6 +106,6 @@ open class HSDriveManager {
     
     // MARK: auth controller
     func updateAuthoriser() {
-        service?.authorizer = HSGIDSignInHandler.authoriser()
+        service?.authorizer = HSGIDSignInHandler.authoriser
     }
 }

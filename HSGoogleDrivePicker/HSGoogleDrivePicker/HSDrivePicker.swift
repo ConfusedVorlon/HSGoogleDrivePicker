@@ -55,8 +55,8 @@ open class HSDrivePicker: UINavigationController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    public init(clientId: String, secret: String) {
-        let viewer = HSDriveFileViewer(clientId: clientId, secret: secret)
+    public init() {
+        let viewer = HSDriveFileViewer()
 
         
         super.init(rootViewController: viewer)

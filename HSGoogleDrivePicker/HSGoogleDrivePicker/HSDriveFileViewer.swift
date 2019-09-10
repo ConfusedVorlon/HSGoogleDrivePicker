@@ -35,11 +35,11 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
     private var folderTrail: [String] = []
     private var showShared = false
     
-    init(clientId clientID: String, secret: String) {
+    init() {
         super.init(nibName: nil, bundle: nil)
         self.title = "Google Drive"
         
-        manager = HSDriveManager(clientId: clientID, secret: secret)
+        manager = HSDriveManager()
         modalPresentationStyle = UIModalPresentationStyle.pageSheet
         
         UIGraphicsBeginImageContext(CGSize(width: 40, height: 40))
@@ -175,7 +175,6 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
         
         manager?.fetchFiles(withCompletionHandler: { ticket, fileList, error in
             self.table?.pullToRefreshView.stopAnimating()
-            
             
             if error != nil {
                 let message = "Error: \(error?.localizedDescription ?? "")"

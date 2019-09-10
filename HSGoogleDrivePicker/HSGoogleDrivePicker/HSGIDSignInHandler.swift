@@ -12,12 +12,12 @@ open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
     static let sharedInstance = HSGIDSignInHandler()
     
     
-    class func authoriser() -> GTMFetcherAuthorizationProtocol? {
+    class var authoriser:GTMFetcherAuthorizationProtocol? {
         return HSGIDSignInHandler.sharedInstance.authoriser
     }
     
     class func canAuthorise() -> Bool {
-        if HSGIDSignInHandler.sharedInstance.authoriser?.canAuthorize != nil {
+        if HSGIDSignInHandler.sharedInstance.authoriser?.canAuthorize == true {
             return true
         }
         
@@ -44,15 +44,27 @@ open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
         GIDSignIn.sharedInstance().signOut()
     }
     
-    weak var authoriser: GTMFetcherAuthorizationProtocol?
+    var authoriser: GTMFetcherAuthorizationProtocol?
     
     override init() {
         super.init()
-        GIDSignIn.sharedInstance().clientID = "544696410407-pqo2mh8os7dl2er7e9ts1bg30epf6n2p.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = clientID
         GIDSignIn.sharedInstance().delegate = self
         
         let currentScopes = GIDSignIn.sharedInstance().scopes
         GIDSignIn.sharedInstance().scopes = currentScopes ?? [] + [kGTLAuthScopeDrive]
+    }
+    
+    var clientID:String {
+        let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
+        if let dict = NSDictionary(contentsOfFile: path ?? "") as? [String:Any]? {
+            let clientID = dict?["CLIENT_ID"] as? String
+            if let clientID = clientID  {
+                return clientID
+            }
+        }
+        
+        fatalError("GoogleService-Info.plist hasn't been added to the project")
     }
     
     public func sign(_ signIn: GIDSignIn?, didSignInFor user: GIDGoogleUser?, withError error: Error?) {

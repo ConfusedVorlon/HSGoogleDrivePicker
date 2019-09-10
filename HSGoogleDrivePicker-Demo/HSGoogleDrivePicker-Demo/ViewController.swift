@@ -9,6 +9,7 @@
 import HSGoogleDrivePicker
 import UIKit
 
+
 class ViewController: UIViewController, UINavigationBarDelegate {
 
     
@@ -25,11 +26,10 @@ class ViewController: UIViewController, UINavigationBarDelegate {
     }
     
     @IBAction func pickFile(_ sender: Any) {
+
+        let picker = HSDrivePicker()
         
-        let picker = HSDrivePicker(secret: "YOUR SECRET HERE")
-        
-        
-        picker?.pick(from: self, withCompletion: { manager, file in
+        picker.pick(from: self, withCompletion: { manager, file in
             //update the label
             if let name = file?.name {
                 self.pickedFile.text = "selected: \(name)"
