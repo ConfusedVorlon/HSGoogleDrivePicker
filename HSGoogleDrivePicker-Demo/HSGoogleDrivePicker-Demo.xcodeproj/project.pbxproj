@@ -12,7 +12,6 @@
 		D44EDE6E1F41CF35006E9179 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE6C1F41CF35006E9179 /* Main.storyboard */; };
 		D44EDE701F41CF35006E9179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE6F1F41CF35006E9179 /* Assets.xcassets */; };
 		D44EDE731F41CF35006E9179 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE711F41CF35006E9179 /* LaunchScreen.storyboard */; };
-		D44EDE7B1F41D581006E9179 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE7A1F41D581006E9179 /* GoogleService-Info.plist */; };
 		DCBE747C0953725E09C86140 /* Pods_HSGoogleDrivePicker_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C0AE7EB58F855AF24FC39A /* Pods_HSGoogleDrivePicker_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +25,6 @@
 		D44EDE6F1F41CF35006E9179 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D44EDE721F41CF35006E9179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D44EDE741F41CF35006E9179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D44EDE7A1F41D581006E9179 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F6797EFFC6604C6B831C7BDB /* Pods-HSGoogleDrivePicker-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSGoogleDrivePicker-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +83,6 @@
 				D44EDE6C1F41CF35006E9179 /* Main.storyboard */,
 				D44EDE6F1F41CF35006E9179 /* Assets.xcassets */,
 				D44EDE711F41CF35006E9179 /* LaunchScreen.storyboard */,
-				D44EDE7A1F41D581006E9179 /* GoogleService-Info.plist */,
 				D44EDE741F41CF35006E9179 /* Info.plist */,
 				D44EDE631F41CF35006E9179 /* Supporting Files */,
 			);
@@ -163,7 +160,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D44EDE731F41CF35006E9179 /* LaunchScreen.storyboard in Resources */,
-				D44EDE7B1F41D581006E9179 /* GoogleService-Info.plist in Resources */,
 				D44EDE701F41CF35006E9179 /* Assets.xcassets in Resources */,
 				D44EDE6E1F41CF35006E9179 /* Main.storyboard in Resources */,
 			);

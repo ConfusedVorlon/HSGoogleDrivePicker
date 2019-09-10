@@ -8,7 +8,6 @@
 
 #import "HSDriveManager.h"
 #import "HSGIDSignInHandler.h"
-#import <GTMOAuth2/GTMOAuth2ViewControllerTouch.h>
 
 
 static NSString *const kKeychainItemName = @"Drive API";
@@ -18,7 +17,6 @@ static NSString *const kKeychainItemName = @"Drive API";
 @property (retain) NSString *clientId;
 @property (retain) NSString *clientSecret;
 @property (nonatomic, strong) GTLServiceDrive *service;
-@property (retain) GTMOAuth2ViewControllerTouch *authController;
 
 @end
 
@@ -58,6 +56,8 @@ static NSString *const kKeychainItemName = @"Drive API";
             // Success.
             handler( nil);
         } else {
+            NSData *data = error.userInfo[@"data"];
+            NSString *dError = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"An error occurred: %@", error);
             handler( error);
         }

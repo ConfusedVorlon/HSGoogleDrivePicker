@@ -15,7 +15,7 @@
 /** Provide your API secret 
     Note that the client ID is read from your GoogleService-Info.plist
  **/
-- (instancetype)initWithSecret:(NSString*)secret;
+- (instancetype)initWithClientId:(NSString*)clientId Secret:(NSString*)secret;
 
 /** Present the picker from your view controller. It will present as a modal form.
  The completion returns both the file, and the authorised manager which can be used to download the file **/

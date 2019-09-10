@@ -14,13 +14,18 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/ConfusedVorlon/HSGoogleDrivePicker.git", :tag => "2.1.0" } 
+  s.source       = { :git => "https://github.com/ConfusedVorlon/HSGoogleDrivePicker.git", :tag => "2.1.0" }
   s.source_files  = "HSGoogleDrivePicker/HSGoogleDrivePicker"
- 
+
   s.requires_arc = true
   s.dependency 'AsyncImageView'
+
+  s.static_framework = true
+  
   s.dependency 'GoogleAPIClient/Drive'
-  s.dependency 'Google/SignIn'
+  s.dependency 'GoogleSignIn'
+
+
   s.dependency 'SVPullToRefresh'
 
 end

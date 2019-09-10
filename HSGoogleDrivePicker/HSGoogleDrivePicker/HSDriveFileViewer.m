@@ -37,15 +37,14 @@
 @implementation HSDriveFileViewer
 
 
-
-- (instancetype)initWithSecret:(NSString*)secret
+- (instancetype)initWithClientId:(NSString*)clientID secret:(NSString*)secret
 {
     self = [super init];
     if (self)
     {
         [self setTitle:@"Google Drive"];
         
-        self.manager=[[HSDriveManager alloc] initWithId:[self clientId]
+        self.manager=[[HSDriveManager alloc] initWithId:clientID
                                                  secret:secret];
         self.modalPresentationStyle=UIModalPresentationPageSheet;
         
@@ -58,15 +57,6 @@
     }
     return self;
 }
-    
--(NSString*)clientId
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
-    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
-    NSString *clientID = [dict objectForKey:@"CLIENT_ID"];
-    return clientID;
-}
-
 
 - (void)viewDidLoad
 {

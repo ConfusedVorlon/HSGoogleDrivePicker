@@ -42,7 +42,7 @@ class ViewController: UIViewController, UINavigationBarDelegate {
             }
             
             let destURL =  URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-            let destinationPath = destURL.absoluteString
+            let destinationPath = destURL.path
             manager?.downloadFile(file, toPath: destinationPath, withCompletionHandler: { error in
                 
                 if error != nil {

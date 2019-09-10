@@ -34,11 +34,9 @@
     self=[super init];
     if (self)
     {
-        NSError *configureError=NULL;
-        [[GGLContext sharedInstance] configureWithError:&configureError];
-        NSAssert(configureError==nil, @"Problem configuring Google Sign in");
-        
-        [[GIDSignIn sharedInstance] setDelegate:self ];
+    
+        [GIDSignIn sharedInstance].clientID = @"544696410407-pqo2mh8os7dl2er7e9ts1bg30epf6n2p.apps.googleusercontent.com";
+        [GIDSignIn sharedInstance].delegate = self;
         
         NSArray *currentScopes = [GIDSignIn sharedInstance].scopes;
         [GIDSignIn sharedInstance].scopes = [currentScopes arrayByAddingObject:kGTLAuthScopeDrive];
@@ -61,14 +59,14 @@
     return NO;
 }
     
-+(void)signInFromViewController:(UIViewController<GIDSignInUIDelegate>*)vc {
++(void)signInFromViewController:(UIViewController*)vc {
     
     [self sharedInstance];
     
     //in iOS 8, the sign-in is called with view_did_appear before the signIn_didSignIn is fired on a queue
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        [GIDSignIn sharedInstance].uiDelegate = vc;
+        [GIDSignIn sharedInstance].presentingViewController = vc;
         [[GIDSignIn sharedInstance] signIn];
     });
     

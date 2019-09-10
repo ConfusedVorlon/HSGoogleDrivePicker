@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Google/SignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 
 #define HSGIDSignInChangedNotification @"HSGIDSignInChangedNotification"
 #define HSGIDSignInFailedNotification @"HSGIDSignInFailedNotification"

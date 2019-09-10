@@ -18,8 +18,8 @@ typedef void (^GDriveFileViewerCompletionBlock)(HSDriveManager *manager, GTLDriv
 /** completion called when file viewer is closed **/
 @property (copy) GDriveFileViewerCompletionBlock completion;
 
-/** Initialise the viewer with your API secret **/
-- (instancetype)initWithSecret:(NSString*)secret;
+/** Initialise the viewer with your id & API secret **/
+- (instancetype)initWithClientId:(NSString*)clientID secret:(NSString*)secret;
 
 /** tells view controller to pop up signin sheet if appropriate once it is visible **/
 @property (assign) BOOL shouldSignInOnAppear;
