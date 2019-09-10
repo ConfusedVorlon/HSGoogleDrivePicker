@@ -7,25 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2114DC835518664B5C5DEB19 /* libPods-HSGoogleDrivePicker-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0429639F551B3B733D2D6E9F /* libPods-HSGoogleDrivePicker-Demo.a */; };
-		D44EDE651F41CF35006E9179 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D44EDE641F41CF35006E9179 /* main.m */; };
-		D44EDE681F41CF35006E9179 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D44EDE671F41CF35006E9179 /* AppDelegate.m */; };
-		D44EDE6B1F41CF35006E9179 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44EDE6A1F41CF35006E9179 /* ViewController.m */; };
+		D44EDE681F41CF35006E9179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44EDE671F41CF35006E9179 /* AppDelegate.swift */; };
+		D44EDE6B1F41CF35006E9179 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44EDE6A1F41CF35006E9179 /* ViewController.swift */; };
 		D44EDE6E1F41CF35006E9179 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE6C1F41CF35006E9179 /* Main.storyboard */; };
 		D44EDE701F41CF35006E9179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE6F1F41CF35006E9179 /* Assets.xcassets */; };
 		D44EDE731F41CF35006E9179 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE711F41CF35006E9179 /* LaunchScreen.storyboard */; };
 		D44EDE7B1F41D581006E9179 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D44EDE7A1F41D581006E9179 /* GoogleService-Info.plist */; };
+		DCBE747C0953725E09C86140 /* Pods_HSGoogleDrivePicker_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C0AE7EB58F855AF24FC39A /* Pods_HSGoogleDrivePicker_Demo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0429639F551B3B733D2D6E9F /* libPods-HSGoogleDrivePicker-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HSGoogleDrivePicker-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38C0AE7EB58F855AF24FC39A /* Pods_HSGoogleDrivePicker_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HSGoogleDrivePicker_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0362764907BF2C5AD3E8308 /* Pods-HSGoogleDrivePicker-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSGoogleDrivePicker-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		D44EDE601F41CF35006E9179 /* HSGoogleDrivePicker-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HSGoogleDrivePicker-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D44EDE641F41CF35006E9179 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D44EDE661F41CF35006E9179 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D44EDE671F41CF35006E9179 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D44EDE691F41CF35006E9179 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D44EDE6A1F41CF35006E9179 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D44EDE671F41CF35006E9179 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D44EDE6A1F41CF35006E9179 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D44EDE6D1F41CF35006E9179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D44EDE6F1F41CF35006E9179 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D44EDE721F41CF35006E9179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -39,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2114DC835518664B5C5DEB19 /* libPods-HSGoogleDrivePicker-Demo.a in Frameworks */,
+				DCBE747C0953725E09C86140 /* Pods_HSGoogleDrivePicker_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +54,7 @@
 		812D0BEE10925ECF626427DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0429639F551B3B733D2D6E9F /* libPods-HSGoogleDrivePicker-Demo.a */,
+				38C0AE7EB58F855AF24FC39A /* Pods_HSGoogleDrivePicker_Demo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -84,10 +80,8 @@
 		D44EDE621F41CF35006E9179 /* HSGoogleDrivePicker-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				D44EDE661F41CF35006E9179 /* AppDelegate.h */,
-				D44EDE671F41CF35006E9179 /* AppDelegate.m */,
-				D44EDE691F41CF35006E9179 /* ViewController.h */,
-				D44EDE6A1F41CF35006E9179 /* ViewController.m */,
+				D44EDE671F41CF35006E9179 /* AppDelegate.swift */,
+				D44EDE6A1F41CF35006E9179 /* ViewController.swift */,
 				D44EDE6C1F41CF35006E9179 /* Main.storyboard */,
 				D44EDE6F1F41CF35006E9179 /* Assets.xcassets */,
 				D44EDE711F41CF35006E9179 /* LaunchScreen.storyboard */,
@@ -101,7 +95,6 @@
 		D44EDE631F41CF35006E9179 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D44EDE641F41CF35006E9179 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -117,8 +110,8 @@
 				D44EDE5C1F41CF35006E9179 /* Sources */,
 				D44EDE5D1F41CF35006E9179 /* Frameworks */,
 				D44EDE5E1F41CF35006E9179 /* Resources */,
-				F030355666273E870A1C1000 /* [CP] Embed Pods Frameworks */,
 				D94F04BCE0589DEF14F1D604 /* [CP] Copy Pods Resources */,
+				D3CC5AE049AB1596A8C48CE0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -150,6 +143,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -196,38 +190,50 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D3CC5AE049AB1596A8C48CE0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/AsyncImageView/AsyncImageView.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClient/GoogleAPIClient.framework",
+				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncImageView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPullToRefresh.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D94F04BCE0589DEF14F1D604 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo-resources.sh",
-				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
+				"${PODS_ROOT}/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F030355666273E870A1C1000 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HSGoogleDrivePicker-Demo/Pods-HSGoogleDrivePicker-Demo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -237,9 +243,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D44EDE6B1F41CF35006E9179 /* ViewController.m in Sources */,
-				D44EDE681F41CF35006E9179 /* AppDelegate.m in Sources */,
-				D44EDE651F41CF35006E9179 /* main.m in Sources */,
+				D44EDE6B1F41CF35006E9179 /* ViewController.swift in Sources */,
+				D44EDE681F41CF35006E9179 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +372,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HobbyistSoftware.HSGoogleDrivePicker-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -380,6 +386,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HobbyistSoftware.HSGoogleDrivePicker-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
