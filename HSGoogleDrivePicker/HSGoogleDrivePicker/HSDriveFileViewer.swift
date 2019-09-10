@@ -15,6 +15,7 @@ import AsyncImageView
 
 public typealias GDriveFileViewerCompletionBlock = (HSDriveManager?, GTLDriveFile?) -> Void
 
+/// Table View and controls to view files
 open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableViewDelegate {
     //* completion called when file viewer is closed *
     open var completion: GDriveFileViewerCompletionBlock?

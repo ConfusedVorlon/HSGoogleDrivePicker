@@ -2,6 +2,7 @@ import GoogleSignIn
 import GoogleAPIClient
 import UIKit
 
+/// Navigation controller to present the File Viewer and signin controller
 open class HSDrivePicker: UINavigationController {
     /** Provide your API secret
      Note that the client ID is read from your GoogleService-Info.plist

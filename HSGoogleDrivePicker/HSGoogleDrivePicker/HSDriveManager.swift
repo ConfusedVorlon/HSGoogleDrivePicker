@@ -2,6 +2,8 @@ import GoogleAPIClient
 
 private let kKeychainItemName = "Drive API"
 
+
+/// Manage interaction with Drive
 open class HSDriveManager {
     //* called by view controller when auth changes after a sign in *
     
