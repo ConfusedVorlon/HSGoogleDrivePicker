@@ -1,5 +1,5 @@
 import GoogleSignIn
-import GoogleAPIClient
+import GoogleAPIClientForREST
 import UIKit
 
 /// Navigation controller to present the File Viewer and signin controller
@@ -77,7 +77,7 @@ open class HSDrivePicker: UINavigationController {
         self.thePreferredStatusBarStyle = thePreferredStatusBarStyle
     }
     
-    public func pick(from vc: UIViewController?, withCompletion completion: @escaping (_ manager: HSDriveManager?, _ file: GTLDriveFile?) -> Void) {
+    public func pick(from vc: UIViewController?, withCompletion completion: @escaping (_ manager: HSDriveManager?, _ file: GTLRDrive_File?) -> Void) {
         viewer?.completion = completion
         viewer?.shouldSignInOnAppear = true
         
@@ -85,7 +85,7 @@ open class HSDrivePicker: UINavigationController {
         
     }
     
-    func downloadFileContent(withService service: GTLServiceDrive?, file: GTLDriveFile?, completionBlock: @escaping (Data?, Error?) -> Void) {
+    func downloadFileContent(withService service: GTLRDriveService?, file: GTLRDrive_File?, completionBlock: @escaping (Data?, Error?) -> Void) {
         
         guard let downloadURL = file?.downloadURL else {
             completionBlock(nil, NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))

@@ -19,7 +19,7 @@ This is the API that Google should have written.
 HSDrivePicker *picker=[[HSDrivePicker alloc] initWithSecret:@"YOUR SECRET HERE"];
     
 [picker pickFromViewController:self
-                withCompletion:^(HSDriveManager *manager, GTLDriveFile *file) {
+                withCompletion:^(HSDriveManager *manager, GTLRDrive_File *file) {
                         NSLog(@"selected: %@",file.title);
                     }];
 ```
@@ -101,12 +101,12 @@ Create and show the picker
 HSDrivePicker *picker=[[HSDrivePicker alloc] initWithSecret:@"YOUR SECRET HERE"];
     
 [picker pickFromViewController:self
-                withCompletion:^(HSDriveManager *manager, GTLDriveFile *file) {
+                withCompletion:^(HSDriveManager *manager, GTLRDrive_File *file) {
                         NSLog(@"selected: %@",file.title);
                     }];
 ```
 
-The completion handler returns with a GTLDriveFile which has all the info you need. 
+The completion handler returns with a GTLRDrive_File which has all the info you need. 
 
 To download the file, use 
 

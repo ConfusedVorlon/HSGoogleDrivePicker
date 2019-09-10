@@ -2,7 +2,7 @@
 
 
 import Foundation
-import GoogleAPIClient
+import GoogleAPIClientForREST
 import GoogleSignIn
 
 open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
@@ -24,9 +24,11 @@ open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
         return false
     }
     
+    weak var viewController:UIViewController?
     class func signIn(from vc: UIViewController?) {
         
-        _ = self.sharedInstance
+        let handler = self.sharedInstance
+        handler.viewController = vc
         
         //in iOS 8, the sign-in is called with view_did_appear before the signIn_didSignIn is fired on a queue
         DispatchQueue.main.async(execute: {
@@ -48,11 +50,19 @@ open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
     
     override init() {
         super.init()
-        GIDSignIn.sharedInstance().clientID = clientID
-        GIDSignIn.sharedInstance().delegate = self
+        guard let signIn = GIDSignIn.sharedInstance() else {
+            print("Unable to create sign in instance")
+            return
+        }
+        
+        signIn.clientID = clientID
+        signIn.delegate = self
         
         let currentScopes = GIDSignIn.sharedInstance().scopes
-        GIDSignIn.sharedInstance().scopes = currentScopes ?? [] + [kGTLAuthScopeDrive]
+        let newScopes = (currentScopes ?? []) + [kGTLRAuthScopeDriveReadonly]
+        signIn.scopes = newScopes
+        
+        signIn.restorePreviousSignIn()
     }
     
     var clientID:String {
@@ -67,20 +77,31 @@ open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
         fatalError("GoogleService-Info.plist hasn't been added to the project")
     }
     
+    
+    
     public func sign(_ signIn: GIDSignIn?, didSignInFor user: GIDGoogleUser?, withError error: Error?) {
-        authoriser = user?.authentication.fetcherAuthorizer()
         
         if error == nil {
+            authoriser = user?.authentication.fetcherAuthorizer()
             NotificationCenter.default.post(name: HSGIDSignInHandler.hsGIDSignInChangedNotification, object: self)
         } else {
+            authoriser = nil
             NotificationCenter.default.post(name: HSGIDSignInHandler.hsGIDSignInFailedNotification, object: self)
-            
-            let av = UIAlertView(title: "Unable to sign in to Drive",
-                                 message: error?.localizedDescription ?? "",
-                                 delegate: nil,
-                                 cancelButtonTitle: "OK",
-                                 otherButtonTitles: "")
-            av.show()
+
+            //silent signin generates this error
+            if let code = (error as NSError?)?.code {
+                if code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                    return
+                }
+            }
+ 
+            if let viewController = viewController {
+                let alert = UIAlertController.init(title: "Unable to sign in to Drive",
+                                                   message: error?.localizedDescription,
+                                                   preferredStyle: .alert)
+                alert.addAction(UIAlertAction.init(title: "OK", style: .default))
+                viewController.present(alert, animated: true)
+            }
         }
     }
     

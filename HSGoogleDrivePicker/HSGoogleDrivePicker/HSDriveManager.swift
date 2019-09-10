@@ -1,4 +1,4 @@
-import GoogleAPIClient
+import GoogleAPIClientForREST
 
 private let kKeychainItemName = "Drive API"
 
@@ -29,18 +29,18 @@ open class HSDriveManager {
     //* Default is 'Sign out'*
     open var signOutLabel:String = "Sign out"
     
-    private var service: GTLServiceDrive?
+    private var service: GTLRDriveService?
     
     init() {
 
         // Initialize the Drive API service & load existing credentials from the keychain if available.
-        service = GTLServiceDrive()
+        service = GTLRDriveService()
         
         service?.authorizer = HSGIDSignInHandler.authoriser
     }
     
     // MARK: download
-    public func downloadFile(_ file: GTLDriveFile?, toPath path: String, withCompletionHandler handler: @escaping (_ error: Error?) -> Void) -> GTMSessionFetcher? {
+    public func downloadFile(_ file: GTLRDrive_File?, toPath path: String, withCompletionHandler handler: @escaping (_ error: Error?) -> Void) -> GTMSessionFetcher? {
         
         guard let downloadURL = file?.downloadURL else {
             return nil
@@ -72,7 +72,7 @@ open class HSDriveManager {
     }
     
     // MARK: file listing
-    func query() -> String? {
+    var filterQuery:String {
         var query = "'\(folderId)' in parents"
         if sharedWithMe {
             query = "sharedWithMe"
@@ -81,22 +81,18 @@ open class HSDriveManager {
         if !showTrashed {
             query = query + (" and trashed = false")
         }
-        
-        
+
         return query
     }
     
     // Construct a query to get names and IDs of files using the Google Drive API.
-    func fetchFiles(withCompletionHandler handler: @escaping GTLServiceCompletionHandler) {
+    func fetchFiles(withCompletionHandler handler: @escaping GTLRServiceCompletionHandler) {
         
         service?.shouldFetchNextPages = autoFetchPages
         
-        guard let query = GTLQueryDrive.queryForFilesList() else {
-            print("Error - no query for file list")
-            return
-        }
+        let query = GTLRDriveQuery_FilesList.query()
         
-        query.q = self.query()
+        query.q = self.filterQuery
         query.fields = "files(id,kind,mimeType,name,size,iconLink)"
         
         

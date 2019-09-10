@@ -9,11 +9,11 @@
 
 
 import UIKit
-import GoogleAPIClient
+import GoogleAPIClientForREST
 import SVPullToRefresh
 import AsyncImageView
 
-public typealias GDriveFileViewerCompletionBlock = (HSDriveManager?, GTLDriveFile?) -> Void
+public typealias GDriveFileViewerCompletionBlock = (HSDriveManager?, GTLRDrive_File?) -> Void
 
 /// Table View and controls to view files
 open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -26,10 +26,10 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
     //* tells view controller to pop up signin sheet if appropriate once it is visible *
     open var shouldSignInOnAppear = false
     private var output: UILabel?
-    private var manager: HSDriveManager?
+    private var manager: HSDriveManager = HSDriveManager()
     private var table: UITableView!
     private var toolbar: UIToolbar?
-    private var fileList: GTLDriveFileList?
+    private var fileList: GTLRDrive_FileList?
     private var blankImage: UIImage?
     private var upItem: UIBarButtonItem?
     private var segmentedControlButtonItem: UIBarButtonItem!
@@ -37,10 +37,11 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
     private var showShared = false
     
     init() {
+
         super.init(nibName: nil, bundle: nil)
         self.title = "Google Drive"
         
-        manager = HSDriveManager()
+        
         modalPresentationStyle = UIModalPresentationStyle.pageSheet
         
         UIGraphicsBeginImageContext(CGSize(width: 40, height: 40))
@@ -122,7 +123,7 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
         
         if HSGIDSignInHandler.canAuthorise() {
             //after first sign in, the authoriser is updated before viewDidAppear is called
-            manager?.updateAuthoriser()
+            
             getFiles()
         } else if shouldSignInOnAppear {
             shouldSignInOnAppear = false
@@ -139,12 +140,11 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @objc func authUpdated() {
-        manager?.updateAuthoriser()
         getFiles()
     }
     
     func updateRightButton() {
-        let signOutButton = UIBarButtonItem(title: manager?.signOutLabel, style: .plain, target: self, action: #selector(signOut))
+        let signOutButton = UIBarButtonItem(title: manager.signOutLabel, style: .plain, target: self, action: #selector(signOut))
         
         navigationItem.rightBarButtonItem = signOutButton
         
@@ -168,20 +168,21 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
             table?.triggerPullToRefresh()
         }
         
-        manager?.sharedWithMe = showShared
+        manager.updateAuthoriser()
+        manager.sharedWithMe = showShared
         fileList = nil
         
         updateDisplay()
         updateButtons()
         
-        manager?.fetchFiles(withCompletionHandler: { ticket, fileList, error in
+        manager.fetchFiles(withCompletionHandler: { ticket, fileList, error in
             self.table?.pullToRefreshView.stopAnimating()
             
             if error != nil {
                 let message = "Error: \(error?.localizedDescription ?? "")"
                 self.output?.text = message
             } else {
-                if let list = fileList as? GTLDriveFileList {
+                if let list = fileList as? GTLRDrive_FileList {
                     self.fileList = list
                 }
                 else {
@@ -197,14 +198,19 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
     func updateDisplay() {
         updateButtons()
         
-        if fileList != nil {
-            if fileList?.files.count != nil {
-                table?.isHidden = false
-                table?.reloadData()
-            } else {
+        
+        if let fileList = fileList, let files = fileList.files {
+            if files.count == 0 {
                 output?.text = "Folder is empty"
                 table?.isHidden = true
+            } else {
+                table?.isHidden = false
+                table?.reloadData()
             }
+        }
+        else {
+            output?.text = ""
+           table?.isHidden = true
         }
         
     }
@@ -250,12 +256,12 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
     @objc func up(_ sender: Any?) {
         if folderTrail.count > 1 {
             folderTrail.removeLast()
-            manager?.folderId = folderTrail.last ?? "root"
+            manager.folderId = folderTrail.last ?? "root"
             getFiles()
         }
     }
     
-    func openFolder(_ file: GTLDriveFile?) {
+    func openFolder(_ file: GTLRDrive_File?) {
         guard let folderId = file?.identifier else {
             print("Can't open folder with no identifier")
             return
@@ -266,18 +272,22 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
             return
         } else {
             folderTrail.append(folderId)
-            manager?.folderId = folderId
+            manager.folderId = folderId
             getFiles()
         }
     }
     
     // MARK: table
-    func file(for indexPath: IndexPath) -> GTLDriveFile? {
-        return fileList?.files[indexPath.row] as? GTLDriveFile
+    func file(for indexPath: IndexPath) -> GTLRDrive_File? {
+        guard let files = fileList?.files else {
+            return nil
+        }
+        
+        return files[indexPath.row]
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fileList?.files.count ?? 0
+        return fileList?.files?.count ?? 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

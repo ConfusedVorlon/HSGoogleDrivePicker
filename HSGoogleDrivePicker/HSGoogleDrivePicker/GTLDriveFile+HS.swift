@@ -1,14 +1,10 @@
-//
-//  GTLDriveFile.m
-//  gdrive
-//
 //  Created by Rob Jonson on 13/10/2015.
 //  Copyright © 2015 HobbyistSoftware. All rights reserved.
 //
 
-import GoogleAPIClient
+import GoogleAPIClientForREST
 
-extension GTLDriveFile {
+extension GTLRDrive_File {
     func isFolder() -> Bool {
         return mimeType == "application/vnd.google-apps.folder"
     }
