@@ -8,12 +8,19 @@
 
 import HSGoogleDrivePicker
 
+//Uncomment this if you're configuring GoogleSignIn manually
+//import GoogleSignIn
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
+        
+        //Optional - you can configure google sign in here rather than using the GoogleService-Info.plist
+        //GIDSignIn.sharedInstance().clientID = "YOUR_CLIENT_ID"
+        
         return true
     }
     
@@ -39,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    //this version works from iOS 9 onwards
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if HSDrivePicker.handle(url) {
             return true

@@ -12,22 +12,26 @@ This is the API that Google should have written.
 
 ## Example
 
-`#import "HSDrivePicker.h"`
 
-```objective-c
+
+```swift
+
+import HSGoogleDrivePicker
     
-HSDrivePicker *picker=[[HSDrivePicker alloc] initWithSecret:@"YOUR SECRET HERE"];
+    let picker = HSDrivePicker()
     
-[picker pickFromViewController:self
-                withCompletion:^(HSDriveManager *manager, GTLRDrive_File *file) {
-                        NSLog(@"selected: %@",file.title);
-                    }];
+    picker.pick(from: self) {
+        (manager, file) in
+    
+        print("picked file: \(file?.name ?? "-none-")")
+    }
+
 ```
 
 ---
-## Updating from 1.0 to 2.0
+## Updating from 2.0 to 3.0
 
-- Use ```[[HSDrivePicker alloc]initWithSecret:]``` instead of ```[[HSDrivePicker alloc]initWithId:secret:]```
+- Use the picker initialisation above
 - Follow the ‘Configure the sign in process’ section below
 
 ---
@@ -37,7 +41,7 @@ You can install HSGoogleDrivePicker in your project by using [CocoaPods](https:/
 
 
 ```Ruby
-pod 'HSGoogleDrivePicker', '~> 2.0’
+pod 'HSGoogleDrivePicker', '~> 3.0’
 
 ```
 
@@ -50,7 +54,10 @@ pod 'HSGoogleDrivePicker', '~> 2.0’
 ## Configure the sign in process
 
 - Download a [configuration file from Google](https://developers.google.com/mobile/add?platform=ios&cntapi=signin)
-- Add the configuration file to your project
+- Add the configuration file to your project 
+- Or manually configure GoogleSignIn by calling `GIDSignIn.sharedInstance().clientID = "YOUR_CLIENT_ID"` in your appDelegate
+
+
 - Add a URL scheme to your project
 
 1. Open your project configuration: double-click the project name in the left tree view. Select your app from the TARGETS section, then select the Info tab, and expand the URL Types section.
@@ -64,27 +71,19 @@ When completed, your config should look something similar to the following (but 
 
 In YourAppDelegate.m
 
-`#import "HSDrivePicker.h"`
+import HSGoogleDrivePicker
 
-```objective-c
+```swift
 
-//Depending on which delegate methods you support…
+func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 
-//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation 
-//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-
-//this version works from iOS 9 onwards
-- (BOOL)application:(UIApplication *)app
-            openURL:(NSURL *)url
-            options:(NSDictionary *)options
-{
-	if ([HSDrivePicker  handleURL:url]) {
-        return YES;
+    if HSDrivePicker.handle(url) {
+        return true
     }
 
-//Your code for other callbacks
+    //Your code for other callbacks
 
-	return YES;
+    return true
 }
 
 ```
@@ -94,43 +93,40 @@ In YourAppDelegate.m
 
 Create and show the picker
 
-`#import "HSDrivePicker.h"`
 
-```objective-c
+```swift
     
-HSDrivePicker *picker=[[HSDrivePicker alloc] initWithSecret:@"YOUR SECRET HERE"];
+    import HSGoogleDrivePicker
     
-[picker pickFromViewController:self
-                withCompletion:^(HSDriveManager *manager, GTLRDrive_File *file) {
-                        NSLog(@"selected: %@",file.title);
-                    }];
+    let picker = HSDrivePicker()
+    
+    picker.pick(from: self) {
+        (manager, file) in
+    
+        print("picked file: \(file?.name ?? "-none-")")
+    }
+    
 ```
 
 The completion handler returns with a GTLRDrive_File which has all the info you need. 
 
 To download the file, use 
 
-```objective-c
+```swift
        
-[manager downloadFile:file
-               toPath:fullPath
-withCompletionHandler:^(NSError *error) {
-
-	if (error)
-	{
-		NSLog(@"Error downloading");
-	}
-	else
-	{
-		NSLog(@"Success");
-	}
-}];
+       manager?.downloadFile(file, toPath: destinationPath, withCompletionHandler: { 
+            error in
+       
+            if error != nil {
+                print("Error downloading : \(error?.localizedDescription ?? "")")
+            } else {
+                print("Success downloading to : \(destinationPath)")
+                }
+       })
 ```
 
 ---
 ## Status
-
-HSGoogleDrivePicker is simplistic and new, but I’m using it in production code. 
 
 I welcome pull requests.
 

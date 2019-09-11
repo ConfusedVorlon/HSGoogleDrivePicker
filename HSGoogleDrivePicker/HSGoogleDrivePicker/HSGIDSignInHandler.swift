@@ -6,6 +6,7 @@ import GoogleAPIClientForREST
 import GoogleSignIn
 
 open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
+    
     static let hsGIDSignInChangedNotification = NSNotification.Name("HSGIDSignInChangedNotification")
     static let hsGIDSignInFailedNotification = NSNotification.Name("HSGIDSignInFailedNotification")
     
@@ -55,7 +56,10 @@ open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
             return
         }
         
-        signIn.clientID = clientID
+        if signIn.clientID == nil {
+            signIn.clientID = clientIDFromPlist
+        }
+        
         signIn.delegate = self
         
         let currentScopes = GIDSignIn.sharedInstance().scopes
@@ -65,7 +69,11 @@ open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
         signIn.restorePreviousSignIn()
     }
     
-    var clientID:String {
+    
+    /// Either add GoogleService-Info.plist to your project
+    /// or manually initialise Google Signin by calling
+    /// GIDSignIn.sharedInstance().clientID = "YOUR_CLIENT_ID" in your AppDelegate
+    var clientIDFromPlist:String {
         let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
         if let dict = NSDictionary(contentsOfFile: path ?? "") as? [String:Any]? {
             let clientID = dict?["CLIENT_ID"] as? String

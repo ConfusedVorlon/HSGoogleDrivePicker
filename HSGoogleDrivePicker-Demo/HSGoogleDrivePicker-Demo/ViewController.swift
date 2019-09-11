@@ -29,18 +29,18 @@ class ViewController: UIViewController, UINavigationBarDelegate {
 
         let picker = HSDrivePicker()
         
-        picker.pick(from: self, withCompletion: { manager, file in
-            //update the label
-            if let name = file?.name {
-                self.pickedFile.text = "selected: \(name)"
-            }
+        picker.pick(from: self) {
+            (manager, file) in
             
-            //Download the file
             guard let fileName = file?.name else {
-                print("Error: File has no name")
+                print("No file picked")
                 return
             }
             
+            //update the label
+            self.pickedFile.text = "selected: \(fileName)"
+            
+            //Download the file
             let destURL =  URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
             let destinationPath = destURL.path
             manager?.downloadFile(file, toPath: destinationPath, withCompletionHandler: { error in
@@ -52,6 +52,6 @@ class ViewController: UIViewController, UINavigationBarDelegate {
                 }
                 
             })
-        })
+        }
     }
 }

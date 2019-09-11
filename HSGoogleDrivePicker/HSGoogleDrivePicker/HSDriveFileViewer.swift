@@ -283,6 +283,10 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
             return nil
         }
         
+        if indexPath.row >= files.count {
+            return nil
+        }
+        
         return files[indexPath.row]
     }
     
@@ -321,7 +325,7 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let file = self.file(for: indexPath)
-        if file?.isFolder() != nil {
+        if file?.isFolder() == true {
             openFolder(file)
         } else {
             dismiss(animated: true) {
