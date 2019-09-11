@@ -4,7 +4,8 @@ private let kKeychainItemName = "Drive API"
 
 
 /// Manage interaction with Drive
-open class HSDriveManager {
+/// Drive manager is declared as an NSObject so that the completion handler in DrivePicker.pick(...) can be represented in Obj-C
+@objcMembers open class HSDriveManager:NSObject {
     //* called by view controller when auth changes after a sign in *
     
     
@@ -31,7 +32,7 @@ open class HSDriveManager {
     
     private var service: GTLRDriveService?
     
-    init() {
+    override init() {
 
         // Initialize the Drive API service & load existing credentials from the keychain if available.
         service = GTLRDriveService()
@@ -40,7 +41,8 @@ open class HSDriveManager {
     }
     
     // MARK: download
-    public func downloadFile(_ file: GTLRDrive_File?, toPath path: String, withCompletionHandler handler: @escaping (_ error: Error?) -> Void) -> GTMSessionFetcher? {
+    @discardableResult
+    @objc public func downloadFile(_ file: GTLRDrive_File?, toPath path: String, withCompletionHandler handler: @escaping (_ error: Error?) -> Void) -> GTMSessionFetcher? {
         
         guard let downloadURL = file?.downloadURL else {
             return nil

@@ -3,7 +3,7 @@ import GoogleAPIClientForREST
 import UIKit
 
 /// Navigation controller to present the File Viewer and signin controller
-open class HSDrivePicker: UINavigationController {
+@objcMembers open class HSDrivePicker: UINavigationController {
     /** Provide your API secret
      Note that the client ID is read from your GoogleService-Info.plist
      **/
@@ -41,8 +41,7 @@ open class HSDrivePicker: UINavigationController {
     
     
     private var viewer: HSDriveFileViewer?
-    private var thePreferredStatusBarStyle: UIStatusBarStyle = .default
-    
+ 
     public class func handle(_ url: URL?) -> Bool {
         _ = HSGIDSignInHandler.sharedInstance
         if GIDSignIn.sharedInstance().handle(url) {
@@ -59,7 +58,6 @@ open class HSDrivePicker: UINavigationController {
     public init() {
         let viewer = HSDriveFileViewer()
 
-        
         super.init(rootViewController: viewer)
         modalPresentationStyle = UIModalPresentationStyle.pageSheet
         self.viewer = viewer
@@ -68,14 +66,7 @@ open class HSDrivePicker: UINavigationController {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return thePreferredStatusBarStyle
-    }
-    
-    public func setPreferredStatusBarStyle(_ thePreferredStatusBarStyle: UIStatusBarStyle) {
-        self.thePreferredStatusBarStyle = thePreferredStatusBarStyle
-    }
+
     
     public func pick(from vc: UIViewController?, withCompletion completion: @escaping (_ manager: HSDriveManager?, _ file: GTLRDrive_File?) -> Void) {
         viewer?.completion = completion

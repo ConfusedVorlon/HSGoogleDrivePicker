@@ -23,7 +23,7 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
     
     
     //* tells view controller to pop up signin sheet if appropriate once it is visible *
-    open var shouldSignInOnAppear = false
+    @objc open var shouldSignInOnAppear = false
     private var output: UILabel?
     private var manager: HSDriveManager = HSDriveManager()
     private var table: UITableView!

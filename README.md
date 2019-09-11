@@ -33,6 +33,7 @@ picker.pick(from: self) {
 
 - Use the picker initialisation above
 - Follow the ‘Configure the sign in process’ section below
+- Note that GTLDriveFile  has changed to GTLRDrive_File in the callback
 
 ---
 ## Installing HSGoogleDrivePicker

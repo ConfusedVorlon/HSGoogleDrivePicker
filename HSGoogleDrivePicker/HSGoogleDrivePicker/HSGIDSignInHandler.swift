@@ -7,8 +7,8 @@ import GoogleSignIn
 
 open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
     
-    static let hsGIDSignInChangedNotification = NSNotification.Name("HSGIDSignInChangedNotification")
-    static let hsGIDSignInFailedNotification = NSNotification.Name("HSGIDSignInFailedNotification")
+    @objc static let hsGIDSignInChangedNotification = NSNotification.Name("HSGIDSignInChangedNotification")
+    @objc static let hsGIDSignInFailedNotification = NSNotification.Name("HSGIDSignInFailedNotification")
     
     static let sharedInstance = HSGIDSignInHandler()
     
