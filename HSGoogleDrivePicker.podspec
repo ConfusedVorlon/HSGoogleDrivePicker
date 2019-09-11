@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HSGoogleDrivePicker"
-  s.version      = "2.1.0"
+  s.version      = "3.0.0"
   s.summary      = "A sane and simple file picker for Google Drive."
 
   s.homepage     = "https://github.com/ConfusedVorlon/HSGoogleDrivePicker"
@@ -15,15 +15,16 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "11.0"
   s.swift_version = '5.0'
 
-  s.source       = { :git => "https://github.com/ConfusedVorlon/HSGoogleDrivePicker.git", :tag => "2.1.0" }
+  s.source       = { :git => "https://github.com/ConfusedVorlon/HSGoogleDrivePicker.git", :tag => s.version.to_s }
   s.source_files  = "HSGoogleDrivePicker/HSGoogleDrivePicker"
 
   s.requires_arc = true
   s.dependency 'AsyncImageView'
 
   s.static_framework = true
-  
-  s.dependency 'GoogleAPIClient/Drive'
-  s.dependency 'GoogleSignIn'
+
+  #1.3.x causes error where methods on GTLRDriveService are unavailable
+  s.dependency 'GoogleAPIClientForREST/Drive', '~> 1.2.1'
+  s.dependency 'GoogleSignIn', '~> 5.0.0'
 
 end
