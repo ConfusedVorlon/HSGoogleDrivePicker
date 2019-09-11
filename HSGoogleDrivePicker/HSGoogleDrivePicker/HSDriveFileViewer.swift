@@ -10,7 +10,6 @@
 
 import UIKit
 import GoogleAPIClientForREST
-import SVPullToRefresh
 import AsyncImageView
 
 public typealias GDriveFileViewerCompletionBlock = (HSDriveManager?, GTLRDrive_File?) -> Void
@@ -82,9 +81,9 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.addPullToRefresh(actionHandler: {
-            self.getFiles()
-        })
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(getFiles), for: .valueChanged)
+
         
         view.addSubview(tableView)
         table = tableView
@@ -163,9 +162,13 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
         dismiss(animated: true)
     }
     
+    @objc
     func getFiles() {
-        if table.pullToRefreshView.state == SVPullToRefreshStateStopped {
-            table?.triggerPullToRefresh()
+        
+        if let refreshControl = table.refreshControl {
+            if !refreshControl.isRefreshing {
+                refreshControl.beginRefreshing()
+            }
         }
         
         manager.updateAuthoriser()
@@ -176,7 +179,7 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
         updateButtons()
         
         manager.fetchFiles(withCompletionHandler: { ticket, fileList, error in
-            self.table?.pullToRefreshView.stopAnimating()
+            self.table?.refreshControl?.endRefreshing()
             
             if error != nil {
                 let message = "Error: \(error?.localizedDescription ?? "")"

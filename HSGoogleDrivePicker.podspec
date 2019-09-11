@@ -26,7 +26,4 @@ Pod::Spec.new do |s|
   s.dependency 'GoogleAPIClient/Drive'
   s.dependency 'GoogleSignIn'
 
-
-  s.dependency 'SVPullToRefresh'
-
 end
