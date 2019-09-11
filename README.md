@@ -17,14 +17,14 @@ This is the API that Google should have written.
 ```swift
 
 import HSGoogleDrivePicker
-    
-    let picker = HSDrivePicker()
-    
-    picker.pick(from: self) {
-        (manager, file) in
-    
-        print("picked file: \(file?.name ?? "-none-")")
-    }
+
+let picker = HSDrivePicker()
+
+picker.pick(from: self) {
+    (manager, file) in
+
+    print("picked file: \(file?.name ?? "-none-")")
+}
 
 ```
 
@@ -35,7 +35,7 @@ import HSGoogleDrivePicker
 - Follow the ‘Configure the sign in process’ section below
 
 ---
-##Installing HSGoogleDrivePicker
+## Installing HSGoogleDrivePicker
 
 You can install HSGoogleDrivePicker in your project by using [CocoaPods](https://github.com/cocoapods/cocoapods)
 
@@ -71,9 +71,10 @@ When completed, your config should look something similar to the following (but 
 
 In YourAppDelegate.m
 
-import HSGoogleDrivePicker
 
 ```swift
+
+import HSGoogleDrivePicker
 
 func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 
@@ -96,15 +97,15 @@ Create and show the picker
 
 ```swift
     
-    import HSGoogleDrivePicker
-    
-    let picker = HSDrivePicker()
-    
-    picker.pick(from: self) {
-        (manager, file) in
-    
-        print("picked file: \(file?.name ?? "-none-")")
-    }
+import HSGoogleDrivePicker
+
+let picker = HSDrivePicker()
+
+picker.pick(from: self) {
+    (manager, file) in
+
+    print("picked file: \(file?.name ?? "-none-")")
+}
     
 ```
 
@@ -114,15 +115,15 @@ To download the file, use
 
 ```swift
        
-       manager?.downloadFile(file, toPath: destinationPath, withCompletionHandler: { 
-            error in
-       
-            if error != nil {
-                print("Error downloading : \(error?.localizedDescription ?? "")")
-            } else {
-                print("Success downloading to : \(destinationPath)")
-                }
-       })
+manager?.downloadFile(file, toPath: destinationPath, withCompletionHandler: { 
+    error in
+
+    if error != nil {
+        print("Error downloading : \(error?.localizedDescription ?? "")")
+    } else {
+        print("Success downloading to : \(destinationPath)")
+    }
+})
 ```
 
 ---
