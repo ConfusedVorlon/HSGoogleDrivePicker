@@ -5,15 +5,14 @@ import Foundation
 import GoogleAPIClientForREST
 import GoogleSignIn
 
+
 open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
     
-    @objc static let hsGIDSignInChangedNotification = NSNotification.Name("HSGIDSignInChangedNotification")
-    @objc static let hsGIDSignInFailedNotification = NSNotification.Name("HSGIDSignInFailedNotification")
+    @objc public static let hsGIDSignInChangedNotification = NSNotification.Name("HSGIDSignInChangedNotification")
+    @objc public static let hsGIDSignInFailedNotification = NSNotification.Name("HSGIDSignInFailedNotification")
     
-    static let sharedInstance = HSGIDSignInHandler()
-    
-    
-    class var authoriser:GTMFetcherAuthorizationProtocol? {
+    public static let sharedInstance = HSGIDSignInHandler()
+    public class var authoriser:GTMFetcherAuthorizationProtocol? {
         return HSGIDSignInHandler.sharedInstance.authoriser
     }
     
@@ -25,7 +24,7 @@ open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
         return false
     }
     
-    weak var viewController:UIViewController?
+    private weak var viewController:UIViewController?
     class func signIn(from vc: UIViewController?) {
         
         let handler = self.sharedInstance
@@ -34,46 +33,67 @@ open class HSGIDSignInHandler: NSObject, GIDSignInDelegate {
         //in iOS 8, the sign-in is called with view_did_appear before the signIn_didSignIn is fired on a queue
         DispatchQueue.main.async(execute: {
             
-            if let vc = vc {
-                GIDSignIn.sharedInstance().presentingViewController = vc
+            guard let signIn = validSignInInstance() else {
+                return
             }
-            GIDSignIn.sharedInstance().signIn()
+            
+            if let vc = vc {
+                signIn.presentingViewController = vc
+            }
+            
+            //NB - if you get a crash here, this probably indicates problems with your GoogleService-Info.plist not having the correct permissions
+            //
+            signIn.signIn()
+
+            
         })
         
     }
     
     class func signOut() {
-        GIDSignIn.sharedInstance().disconnect()
-        GIDSignIn.sharedInstance().signOut()
+        guard let signIn = validSignInInstance() else {
+            return
+        }
+        
+        signIn.disconnect()
+        signIn.signOut()
     }
     
-    var authoriser: GTMFetcherAuthorizationProtocol?
-    
-    override init() {
-        super.init()
+    private class func validSignInInstance() -> GIDSignIn? {
         guard let signIn = GIDSignIn.sharedInstance() else {
             print("Unable to create sign in instance")
-            return
+            return nil
         }
         
         if signIn.clientID == nil {
             signIn.clientID = clientIDFromPlist
         }
         
+        if signIn.clientID == nil {
+            print("Unable to get signIn clientID")
+            return nil
+        }
+
+        return signIn
+    }
+    
+    private var authoriser: GTMFetcherAuthorizationProtocol?
+    private override init() {
+        super.init()
+        guard let signIn = HSGIDSignInHandler.validSignInInstance() else {
+            return
+        }
+  
         signIn.delegate = self
         
-        let currentScopes = GIDSignIn.sharedInstance().scopes
+        let currentScopes = signIn.scopes
         let newScopes = (currentScopes ?? []) + [kGTLRAuthScopeDriveReadonly]
         signIn.scopes = newScopes
         
         signIn.restorePreviousSignIn()
     }
     
-    
-    /// Either add GoogleService-Info.plist to your project
-    /// or manually initialise Google Signin by calling
-    /// GIDSignIn.sharedInstance().clientID = "YOUR_CLIENT_ID" in your AppDelegate
-    var clientIDFromPlist:String {
+    private static var clientIDFromPlist:String {
         let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
         if let dict = NSDictionary(contentsOfFile: path ?? "") as? [String:Any]? {
             let clientID = dict?["CLIENT_ID"] as? String
