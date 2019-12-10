@@ -59,8 +59,8 @@ Note - Google's instructions are confusing, and change frequently. Don't give up
 ## Configure the sign in process
 
 - Download a the configuration file for your app
- - [From firebase](https://developers.google.com/mobile/add?platform=ios&cntapi=signin)
- - Or the [Cloud Platform](https://console.cloud.google.com/apis/dashboard) (click on credentials, the iOS client, then 'download plist')
+   - [From firebase](https://developers.google.com/mobile/add?platform=ios&cntapi=signin)
+   - Or the [Cloud Platform](https://console.cloud.google.com/apis/dashboard) (click on credentials, the iOS client, then 'download plist')
 - Add the configuration file to your project
 - Or manually configure GoogleSignIn by calling `GIDSignIn.sharedInstance().clientID = "YOUR_CLIENT_ID"` in your appDelegate
 
