@@ -29,25 +29,28 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
     private var table: UITableView!
     private var toolbar: UIToolbar?
     private var fileList: GTLRDrive_FileList?
-    private var blankImage: UIImage?
+    
     private var upItem: UIBarButtonItem?
     private var segmentedControlButtonItem: UIBarButtonItem!
     private var folderTrail: [String] = []
     private var showShared = false
     
+    private lazy var blankImage: UIImage? = {
+        UIGraphicsBeginImageContext(CGSize(width: 40, height: 40))
+        UIGraphicsGetCurrentContext()?.addRect(CGRect(x: 0, y: 0, width: 40, height: 40)) // this may not be necessary
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image
+    }()
+    
     init() {
 
         super.init(nibName: nil, bundle: nil)
         self.title = "Google Drive"
-        
-        
+  
         modalPresentationStyle = UIModalPresentationStyle.pageSheet
-        
-        UIGraphicsBeginImageContext(CGSize(width: 40, height: 40))
-        UIGraphicsGetCurrentContext()?.addRect(CGRect(x: 0, y: 0, width: 40, height: 40)) // this may not be necessary
-        blankImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
+
         folderTrail = ["root"]
     }
     
@@ -61,7 +64,11 @@ open class HSDriveFileViewer: UIViewController, UITableViewDataSource, UITableVi
         
         navigationController?.navigationBar.isTranslucent = false
         
-        view.backgroundColor = UIColor.white
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = UIColor.systemBackground
+        } else {
+            view.backgroundColor = UIColor.white
+        }
         
         // Create a UITextView to display output.
         let output = UILabel(frame: CGRect(x: 40, y: 100, width: view.bounds.size.width - 80, height: 40))
