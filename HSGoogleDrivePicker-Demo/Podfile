@@ -6,7 +6,8 @@ target 'HSGoogleDrivePicker-Demo' do
   use_frameworks!
   
   # Pods for HSGoogleDrivePicker-Demo
-  pod 'HSGoogleDrivePicker', '~> 3.0'
+  #pod 'HSGoogleDrivePicker', '~> 3.0'
+  pod 'HSGoogleDrivePicker',path: "/Users/rob/Documents/Development/Specs/HSGoogleDrivePicker/HSGoogleDrivePicker.podspec"
   
   
 end

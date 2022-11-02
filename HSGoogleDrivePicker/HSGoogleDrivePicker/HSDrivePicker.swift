@@ -44,7 +44,7 @@ import UIKit
  
     public class func handle(_ url: URL?) -> Bool {
         _ = HSGIDSignInHandler.sharedInstance
-        if GIDSignIn.sharedInstance().handle(url) {
+        if let url, GIDSignIn.sharedInstance.handle(url) {
             return true
         }
         

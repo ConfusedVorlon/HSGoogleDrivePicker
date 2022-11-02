@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HSGoogleDrivePicker"
-  s.version      = "3.0.2"
+  s.version      = "3.1.2"
   s.summary      = "A sane and simple file picker for Google Drive."
 
   s.homepage     = "https://github.com/ConfusedVorlon/HSGoogleDrivePicker"
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.author             = { "Rob" => "Rob@HobbyistSoftware.com" }
 
-  s.platform     = :ios, "11.0"
+  s.platform     = :ios, "13.0"
   s.swift_version = '5.0'
 
   s.source       = { :git => "https://github.com/ConfusedVorlon/HSGoogleDrivePicker.git", :tag => s.version.to_s }
@@ -25,6 +25,6 @@ Pod::Spec.new do |s|
 
   #1.3.x causes error where methods on GTLRDriveService are unavailable
   s.dependency 'GoogleAPIClientForREST/Drive', '~> 1.2.1'
-  s.dependency 'GoogleSignIn', '~> 5.0.0'
+  s.dependency 'GoogleSignIn', '~> 6.2'
 
 end
